@@ -17,7 +17,7 @@ export PATH=$PATH:~/go/bin
 # go install -ldflags '-w -s -X github.com/cosmos/cosmos-sdk/types.DBBackend=badgerdb' -tags badgerdb ./...
 # go install -ldflags '-w -s -X github.com/cosmos/cosmos-sdk/types.DBBackend=boltdb' -tags boltdb ./...
 # Initialize chain.
-vinced init test --chain-id evmos_9000-2
+vinced init test --chain-id vince_1903-2
 
 # Get Genesis
 wget https://archive.evmos.org/mainnet/genesis.json

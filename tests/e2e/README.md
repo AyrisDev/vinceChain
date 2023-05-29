@@ -50,7 +50,7 @@ MOUNT_PATH
 
 # '--chain-id' evmos cli parameter, used to start nodes with a specific
 # chain-id and submit proposals
-# By default this is 'evmos_9000-1'
+# By default this is 'vince_1903-1'
 CHAIN_ID
 ```
 
@@ -145,7 +145,7 @@ In case of a successful upgrade,
 the script will print the following output (example):
 
 ```log
-ok  	github.com/evmos/evmos/v9/tests/e2e	174.137s.
+ok  	github.com/AyrisDev/vinceChain/v9/tests/e2e	174.137s.
 ```
 
 If the target node version fails to start,
@@ -165,7 +165,7 @@ Error:  Received unexpected error:
         github.com/cosmos/cosmos-sdk/baseapp.SetMinGasPrices({0xc0013563e7?, ...
             github.com/cosmos/cosmos-sdk@v0.46.5/baseapp/options.go:29 +0xd9
         main.appCreator.newApp({{{0x3399b40, 0xc000ec1db8}, {0x33ac0f8, 0xc00...
-            github.com/evmos/evmos/v10/cmd/vinced/root.go:243 +0x2ca
+            github.com/AyrisDev/vinceChain/v10/cmd/vinced/root.go:243 +0x2ca
         github.com/evmos/ethermint/server.startInProcess(_, {{0x0, 0x0, 0x0},...
             github.com/evmos/ethermint@v0.20.0-rc2/server/start.go:304 +0x9c5
         github.com/evmos/ethermint/server.StartCmd.func2(0xc001620600?, {0xc0...
@@ -181,7 +181,7 @@ Error:  Received unexpected error:
         github.com/cosmos/cosmos-sdk/server/cmd.Execute(0x2170d50?, {0x26d961...
             github.com/cosmos/cosmos-sdk@v0.46.5/server/cmd/execute.go:36 +0x...
         main.main()
-            github.com/evmos/evmos/v10/cmd/vinced/main.go:20 +0x45
+            github.com/AyrisDev/vinceChain/v10/cmd/vinced/main.go:20 +0x45
 
 
         [output stream]:

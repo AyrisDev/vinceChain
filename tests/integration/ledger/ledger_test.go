@@ -9,12 +9,12 @@ import (
 	"github.com/cosmos/cosmos-sdk/crypto/keyring"
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/crypto/hd"
-	"github.com/evmos/evmos/v12/encoding"
-	"github.com/evmos/evmos/v12/tests/integration/ledger/mocks"
-	"github.com/evmos/evmos/v12/testutil"
-	utiltx "github.com/evmos/evmos/v12/testutil/tx"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/crypto/hd"
+	"github.com/AyrisDev/vinceChain/v12/encoding"
+	"github.com/AyrisDev/vinceChain/v12/tests/integration/ledger/mocks"
+	"github.com/AyrisDev/vinceChain/v12/testutil"
+	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
 
 	"github.com/spf13/cobra"
 

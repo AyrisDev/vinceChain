@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/evmos/evmos/v12/utils"
+	"github.com/AyrisDev/vinceChain/v12/utils"
 
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
@@ -24,14 +24,14 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/params"
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/crypto/ethsecp256k1"
-	"github.com/evmos/evmos/v12/encoding"
-	"github.com/evmos/evmos/v12/testutil"
-	utiltx "github.com/evmos/evmos/v12/testutil/tx"
-	evmostypes "github.com/evmos/evmos/v12/types"
-	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
-	feemarkettypes "github.com/evmos/evmos/v12/x/feemarket/types"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
+	"github.com/AyrisDev/vinceChain/v12/encoding"
+	"github.com/AyrisDev/vinceChain/v12/testutil"
+	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
+	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
+	feemarkettypes "github.com/AyrisDev/vinceChain/v12/x/feemarket/types"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	abci "github.com/tendermint/tendermint/abci/types"
@@ -153,7 +153,7 @@ func (suite *KeeperTestSuite) SetupAppWithT(checkTx bool, t require.TestingT) {
 		// Initialize the chain
 		suite.app.InitChain(
 			abci.RequestInitChain{
-				ChainId:         "evmos_9000-1",
+				ChainId:         "vince_1903-1",
 				Validators:      []abci.ValidatorUpdate{},
 				ConsensusParams: app.DefaultConsensusParams,
 				AppStateBytes:   stateBytes,
@@ -162,7 +162,7 @@ func (suite *KeeperTestSuite) SetupAppWithT(checkTx bool, t require.TestingT) {
 	}
 
 	header := testutil.NewHeader(
-		1, time.Now().UTC(), "evmos_9000-1", suite.consAddress,
+		1, time.Now().UTC(), "vince_1903-1", suite.consAddress,
 		tmhash.Sum([]byte("app")), tmhash.Sum([]byte("validators")),
 	)
 	suite.ctx = suite.app.NewContext(checkTx, header)

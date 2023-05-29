@@ -12,7 +12,7 @@
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Evmos packages. If not, see https://github.com/evmos/evmos/blob/main/LICENSE
+// along with the Evmos packages. If not, see https://github.com/AyrisDev/vinceChain/blob/main/LICENSE
 
 package inflation
 
@@ -35,9 +35,9 @@ import (
 	"github.com/spf13/cobra"
 	abci "github.com/tendermint/tendermint/abci/types"
 
-	"github.com/evmos/evmos/v12/x/inflation/client/cli"
-	"github.com/evmos/evmos/v12/x/inflation/keeper"
-	"github.com/evmos/evmos/v12/x/inflation/types"
+	"github.com/AyrisDev/vinceChain/v12/x/inflation/client/cli"
+	"github.com/AyrisDev/vinceChain/v12/x/inflation/keeper"
+	"github.com/AyrisDev/vinceChain/v12/x/inflation/types"
 )
 
 // type check to ensure the interface is properly implemented

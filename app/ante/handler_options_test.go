@@ -1,12 +1,12 @@
 package ante_test
 
 import (
-	ethante "github.com/evmos/evmos/v12/app/ante/evm"
-	"github.com/evmos/evmos/v12/encoding"
-	"github.com/evmos/evmos/v12/types"
+	ethante "github.com/AyrisDev/vinceChain/v12/app/ante/evm"
+	"github.com/AyrisDev/vinceChain/v12/encoding"
+	"github.com/AyrisDev/vinceChain/v12/types"
 
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/app/ante"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/app/ante"
 )
 
 func (suite *AnteTestSuite) TestValidateHandlerOptions() {

@@ -12,7 +12,7 @@
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Evmos packages. If not, see https://github.com/evmos/evmos/blob/main/LICENSE
+// along with the Evmos packages. If not, see https://github.com/AyrisDev/vinceChain/blob/main/LICENSE
 package net
 
 import (
@@ -20,7 +20,7 @@ import (
 	"fmt"
 
 	"github.com/cosmos/cosmos-sdk/client"
-	"github.com/evmos/evmos/v12/types"
+	"github.com/AyrisDev/vinceChain/v12/types"
 	rpcclient "github.com/tendermint/tendermint/rpc/client"
 )
 

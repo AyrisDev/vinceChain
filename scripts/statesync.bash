@@ -31,7 +31,7 @@ go install ./...
 # go install -ldflags '-w -s -X github.com/cosmos/cosmos-sdk/types.DBBackend=boltdb' -tags boltdb ./...
 
 # Initialize chain.
-vinced init test --chain-id evmos_9000-1
+vinced init test --chain-id vince_1903-1
 
 # Get Genesis
 wget https://archive.evmos.org/mainnet/genesis.json
@@ -56,7 +56,7 @@ export vinced_STATESYNC_TRUST_HEIGHT=$BLOCK_HEIGHT
 export vinced_STATESYNC_TRUST_HASH=$TRUST_HASH
 
 # Fetch and set list of seeds from chain registry.
-export vinced_P2P_SEEDS=$(curl -s https://raw.githubusercontent.com/cosmos/chain-registry/master/evmos/chain.json | jq -r '[foreach .peers.seeds[] as $item (""; "\($item.id)@\($item.address)")] | join(",")')
+export vinced_P2P_SEEDS=$(curl -s https://raw.githubusercontent.com/cosmos/chain-registry/master/vincechain/chain.json | jq -r '[foreach .peers.seeds[] as $item (""; "\($item.id)@\($item.address)")] | join(",")')
 
 # Start chain.
 vinced start --x-crisis-skip-assert-invariants 

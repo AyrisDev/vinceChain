@@ -5,7 +5,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/evmos/evmos/v12/utils"
+	"github.com/AyrisDev/vinceChain/v12/utils"
 
 	sdkmath "cosmossdk.io/math"
 	"github.com/cosmos/cosmos-sdk/baseapp"
@@ -21,14 +21,14 @@ import (
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/ethereum/go-ethereum/crypto"
 
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/crypto/ethsecp256k1"
-	"github.com/evmos/evmos/v12/encoding"
-	"github.com/evmos/evmos/v12/testutil"
-	utiltx "github.com/evmos/evmos/v12/testutil/tx"
-	evmostypes "github.com/evmos/evmos/v12/types"
-	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
-	"github.com/evmos/evmos/v12/x/feemarket/types"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
+	"github.com/AyrisDev/vinceChain/v12/encoding"
+	"github.com/AyrisDev/vinceChain/v12/testutil"
+	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
+	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
+	"github.com/AyrisDev/vinceChain/v12/x/feemarket/types"
 
 	"github.com/stretchr/testify/require"
 
@@ -51,7 +51,7 @@ func (suite *KeeperTestSuite) SetupApp(checkTx bool) {
 	suite.consAddress = sdk.ConsAddress(priv.PubKey().Address())
 
 	header := testutil.NewHeader(
-		1, time.Now().UTC(), "evmos_9000-1", suite.consAddress, nil, nil,
+		1, time.Now().UTC(), "vince_1903-1", suite.consAddress, nil, nil,
 	)
 
 	suite.ctx = suite.app.BaseApp.NewContext(checkTx, header)
@@ -169,7 +169,7 @@ func setupChain(localMinGasPricesStr string) {
 	// Initialize the chain
 	newapp.InitChain(
 		abci.RequestInitChain{
-			ChainId:         "evmos_9000-1",
+			ChainId:         "vince_1903-1",
 			Validators:      []abci.ValidatorUpdate{},
 			AppStateBytes:   stateBytes,
 			ConsensusParams: app.DefaultConsensusParams,

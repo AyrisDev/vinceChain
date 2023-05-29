@@ -18,20 +18,20 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/spf13/cobra"
 
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/crypto/hd"
-	"github.com/evmos/evmos/v12/tests/integration/ledger/mocks"
-	utiltx "github.com/evmos/evmos/v12/testutil/tx"
-	"github.com/evmos/evmos/v12/utils"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/crypto/hd"
+	"github.com/AyrisDev/vinceChain/v12/tests/integration/ledger/mocks"
+	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
+	"github.com/AyrisDev/vinceChain/v12/utils"
 	"github.com/stretchr/testify/suite"
 	"github.com/tendermint/tendermint/crypto/tmhash"
 	"github.com/tendermint/tendermint/version"
 
 	cosmosledger "github.com/cosmos/cosmos-sdk/crypto/ledger"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	clientkeys "github.com/evmos/evmos/v12/client/keys"
-	evmoskeyring "github.com/evmos/evmos/v12/crypto/keyring"
-	feemarkettypes "github.com/evmos/evmos/v12/x/feemarket/types"
+	clientkeys "github.com/AyrisDev/vinceChain/v12/client/keys"
+	evmoskeyring "github.com/AyrisDev/vinceChain/v12/crypto/keyring"
+	feemarkettypes "github.com/AyrisDev/vinceChain/v12/x/feemarket/types"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
 	tmversion "github.com/tendermint/tendermint/proto/tendermint/version"
 	rpcclientmock "github.com/tendermint/tendermint/rpc/client/mock"
@@ -88,7 +88,7 @@ func (suite *LedgerTestSuite) SetupEvmosApp() {
 	suite.app = app.Setup(false, feemarkettypes.DefaultGenesisState())
 	suite.ctx = suite.app.BaseApp.NewContext(false, tmproto.Header{
 		Height:          1,
-		ChainID:         "evmos_9001-1",
+		ChainID:         "vince_1904-1",
 		Time:            time.Now().UTC(),
 		ProposerAddress: consAddress.Bytes(),
 

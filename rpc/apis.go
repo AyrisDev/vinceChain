@@ -12,7 +12,7 @@
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Evmos packages. If not, see https://github.com/evmos/evmos/blob/main/LICENSE
+// along with the Evmos packages. If not, see https://github.com/AyrisDev/vinceChain/blob/main/LICENSE
 package rpc
 
 import (
@@ -23,16 +23,16 @@ import (
 
 	"github.com/ethereum/go-ethereum/rpc"
 
-	"github.com/evmos/evmos/v12/rpc/backend"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/debug"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/eth"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/eth/filters"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/miner"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/net"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/personal"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/txpool"
-	"github.com/evmos/evmos/v12/rpc/namespaces/ethereum/web3"
-	"github.com/evmos/evmos/v12/types"
+	"github.com/AyrisDev/vinceChain/v12/rpc/backend"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/debug"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/eth"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/eth/filters"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/miner"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/net"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/personal"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/txpool"
+	"github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/web3"
+	"github.com/AyrisDev/vinceChain/v12/types"
 
 	rpcclient "github.com/tendermint/tendermint/rpc/jsonrpc/client"
 )

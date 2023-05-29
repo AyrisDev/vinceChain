@@ -12,7 +12,7 @@
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Evmos packages. If not, see https://github.com/evmos/evmos/blob/main/LICENSE
+// along with the Evmos packages. If not, see https://github.com/AyrisDev/vinceChain/blob/main/LICENSE
 package backend
 
 import (
@@ -37,8 +37,8 @@ import (
 	"github.com/tendermint/tendermint/libs/log"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
 
-	"github.com/evmos/evmos/v12/rpc/types"
-	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
+	"github.com/AyrisDev/vinceChain/v12/rpc/types"
+	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 	"github.com/tendermint/tendermint/proto/tendermint/crypto"
 )
 

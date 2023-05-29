@@ -6,9 +6,9 @@ import (
 	sdkmath "cosmossdk.io/math"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
-	evmostypes "github.com/evmos/evmos/v12/types"
-	incentivestypes "github.com/evmos/evmos/v12/x/incentives/types"
-	"github.com/evmos/evmos/v12/x/inflation/types"
+	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	incentivestypes "github.com/AyrisDev/vinceChain/v12/x/incentives/types"
+	"github.com/AyrisDev/vinceChain/v12/x/inflation/types"
 )
 
 func (suite *KeeperTestSuite) TestMintAndAllocateInflation() {
@@ -127,7 +127,7 @@ func (suite *KeeperTestSuite) TestGetCirculatingSupplyAndInflationRate() {
 			suite.SetupTest() // reset
 
 			// Team allocation is only set on mainnet
-			suite.ctx = suite.ctx.WithChainID("evmos_9001-1")
+			suite.ctx = suite.ctx.WithChainID("vince_1904-1")
 			tc.malleate()
 
 			// Mint coins to increase supply
@@ -179,9 +179,9 @@ func (suite *KeeperTestSuite) TestBondedRatio() {
 
 			// Team allocation is only set on mainnet
 			if tc.isMainnet {
-				suite.ctx = suite.ctx.WithChainID("evmos_9001-1")
+				suite.ctx = suite.ctx.WithChainID("vince_1903-1")
 			} else {
-				suite.ctx = suite.ctx.WithChainID("evmos_9999-666")
+				suite.ctx = suite.ctx.WithChainID("vince_1904-1")
 			}
 			tc.malleate()
 

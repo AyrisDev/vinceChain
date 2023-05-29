@@ -12,7 +12,7 @@
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Evmos packages. If not, see https://github.com/evmos/evmos/blob/main/LICENSE
+// along with the Evmos packages. If not, see https://github.com/AyrisDev/vinceChain/blob/main/LICENSE
 package tx
 
 import (
@@ -26,8 +26,8 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	authsigning "github.com/cosmos/cosmos-sdk/x/auth/signing"
 
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/utils"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/utils"
 )
 
 var (
@@ -41,7 +41,7 @@ type CosmosTxArgs struct {
 	TxCfg client.TxConfig
 	// Priv is the private key that will be used to sign the tx
 	Priv cryptotypes.PrivKey
-	// ChainID is the chain's id on cosmos format, e.g. 'evmos_9000-1'
+	// ChainID is the chain's id on cosmos format, e.g. 'vince_1903-1'
 	ChainID string
 	// Gas to be used on the tx
 	Gas uint64

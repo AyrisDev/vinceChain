@@ -15,21 +15,21 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/ethereum/go-ethereum/core/types"
-	"github.com/evmos/evmos/v12/app"
-	"github.com/evmos/evmos/v12/app/ante"
-	"github.com/evmos/evmos/v12/encoding"
-	"github.com/evmos/evmos/v12/ethereum/eip712"
-	"github.com/evmos/evmos/v12/testutil"
-	"github.com/evmos/evmos/v12/utils"
-	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
-	feemarkettypes "github.com/evmos/evmos/v12/x/feemarket/types"
+	"github.com/AyrisDev/vinceChain/v12/app"
+	"github.com/AyrisDev/vinceChain/v12/app/ante"
+	"github.com/AyrisDev/vinceChain/v12/encoding"
+	"github.com/AyrisDev/vinceChain/v12/ethereum/eip712"
+	"github.com/AyrisDev/vinceChain/v12/testutil"
+	"github.com/AyrisDev/vinceChain/v12/utils"
+	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
+	feemarkettypes "github.com/AyrisDev/vinceChain/v12/x/feemarket/types"
 )
 
 type AnteTestSuite struct {
 	suite.Suite
 
 	ctx             sdk.Context
-	app             *app.Evmos
+	app             *app.Vince
 	clientCtx       client.Context
 	anteHandler     sdk.AnteHandler
 	ethSigner       types.Signer
@@ -41,7 +41,7 @@ type AnteTestSuite struct {
 func (suite *AnteTestSuite) SetupTest() {
 	checkTx := false
 
-	suite.app = app.EthSetup(checkTx, func(app *app.Evmos, genesis simapp.GenesisState) simapp.GenesisState {
+	suite.app = app.EthSetup(checkTx, func(app *app.Vince, genesis simapp.GenesisState) simapp.GenesisState {
 		if suite.enableFeemarket {
 			// setup feemarketGenesis params
 			feemarketGenesis := feemarkettypes.DefaultGenesisState()

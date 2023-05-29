@@ -12,7 +12,7 @@
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Evmos packages. If not, see https://github.com/evmos/evmos/blob/main/LICENSE
+// along with the Evmos packages. If not, see https://github.com/AyrisDev/vinceChain/blob/main/LICENSE
 
 package keeper
 
@@ -26,11 +26,11 @@ import (
 	"github.com/ethereum/go-ethereum/core"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	evmtypes "github.com/evmos/evmos/v12/x/evm/types"
+	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 
 	clienttypes "github.com/cosmos/ibc-go/v6/modules/core/02-client/types"
 	porttypes "github.com/cosmos/ibc-go/v6/modules/core/05-port/types"
-	"github.com/evmos/evmos/v12/x/claims/types"
+	"github.com/AyrisDev/vinceChain/v12/x/claims/types"
 )
 
 var (
