@@ -22,7 +22,7 @@ import (
 	errorsmod "cosmossdk.io/errors"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	vestexported "github.com/cosmos/cosmos-sdk/x/auth/vesting/exported"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 
 	"github.com/AyrisDev/vinceChain/v12/x/claims/types"
 )
@@ -134,7 +134,7 @@ func (k Keeper) ClawbackEmptyAccounts(ctx sdk.Context, claimsDenom string) {
 		}
 
 		// ignore non ETH accounts
-		if _, isEthAccount := acc.(evmostypes.EthAccountI); !isEthAccount {
+		if _, isEthAccount := acc.(vincetypes.EthAccountI); !isEthAccount {
 			return false
 		}
 

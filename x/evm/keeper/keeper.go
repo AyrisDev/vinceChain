@@ -31,7 +31,7 @@ import (
 	"github.com/ethereum/go-ethereum/params"
 	"github.com/tendermint/tendermint/libs/log"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/statedb"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/types"
 )
@@ -117,7 +117,7 @@ func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 
 // WithChainID sets the chain id to the local variable in the keeper
 func (k *Keeper) WithChainID(ctx sdk.Context) {
-	chainID, err := evmostypes.ParseChainID(ctx.ChainID())
+	chainID, err := vincetypes.ParseChainID(ctx.ChainID())
 	if err != nil {
 		panic(err)
 	}
@@ -282,7 +282,7 @@ func (k *Keeper) GetAccountWithoutBalance(ctx sdk.Context, addr common.Address) 
 	}
 
 	codeHash := types.EmptyCodeHash
-	ethAcct, ok := acct.(evmostypes.EthAccountI)
+	ethAcct, ok := acct.(vincetypes.EthAccountI)
 	if ok {
 		codeHash = ethAcct.GetCodeHash().Bytes()
 	}

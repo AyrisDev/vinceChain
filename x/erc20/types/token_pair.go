@@ -19,7 +19,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/tendermint/tendermint/crypto/tmhash"
 )
 
@@ -50,7 +50,7 @@ func (tp TokenPair) Validate() error {
 		return err
 	}
 
-	return evmostypes.ValidateAddress(tp.Erc20Address)
+	return vincetypes.ValidateAddress(tp.Erc20Address)
 }
 
 // IsNativeCoin returns true if the owner of the ERC20 contract is the

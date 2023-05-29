@@ -65,7 +65,7 @@ import (
 	ethdebug "github.com/AyrisDev/vinceChain/v12/rpc/namespaces/ethereum/debug"
 	"github.com/AyrisDev/vinceChain/v12/server/config"
 	srvflags "github.com/AyrisDev/vinceChain/v12/server/flags"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 // DBOpener is a function to open `application.db`, potentially with customized options.
@@ -423,7 +423,7 @@ func startInProcess(ctx *server.Context, clientCtx client.Context, opts StartOpt
 		ethmetricsexp.Setup(config.JSONRPC.MetricsAddress)
 	}
 
-	var idxer evmostypes.EVMTxIndexer
+	var idxer vincetypes.EVMTxIndexer
 	if config.JSONRPC.EnableIndexer {
 		idxDB, err := OpenIndexerDB(home, server.GetAppDBBackend(ctx.Viper))
 		if err != nil {

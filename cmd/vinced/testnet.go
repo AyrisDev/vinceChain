@@ -57,7 +57,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/server/config"
 	srvflags "github.com/AyrisDev/vinceChain/v12/server/flags"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 
 	cmdcfg "github.com/AyrisDev/vinceChain/v12/cmd/config"
@@ -309,18 +309,18 @@ func initTestnetFiles(
 			return err
 		}
 
-		accStakingTokens := sdk.TokensFromConsensusPower(5000, evmostypes.PowerReduction)
+		accStakingTokens := sdk.TokensFromConsensusPower(5000, vincetypes.PowerReduction)
 		coins := sdk.Coins{
 			sdk.NewCoin(cmdcfg.BaseDenom, accStakingTokens),
 		}
 
 		genBalances = append(genBalances, banktypes.Balance{Address: addr.String(), Coins: coins.Sort()})
-		genAccounts = append(genAccounts, &evmostypes.EthAccount{
+		genAccounts = append(genAccounts, &vincetypes.EthAccount{
 			BaseAccount: authtypes.NewBaseAccount(addr, nil, 0, 0),
 			CodeHash:    common.BytesToHash(evmtypes.EmptyCodeHash).Hex(),
 		})
 
-		valTokens := sdk.TokensFromConsensusPower(100, evmostypes.PowerReduction)
+		valTokens := sdk.TokensFromConsensusPower(100, vincetypes.PowerReduction)
 		createValMsg, err := stakingtypes.NewMsgCreateValidator(
 			sdk.ValAddress(addr),
 			valPubKeys[i],

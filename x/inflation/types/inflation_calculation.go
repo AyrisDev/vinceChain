@@ -19,7 +19,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 // CalculateEpochProvisions returns mint provision per epoch
@@ -58,6 +58,6 @@ func CalculateEpochMintProvision(
 	// Multiply epochMintProvision with power reduction (10^18 for evmos) as the
 	// calculation is based on `evmos` and the issued tokens need to be given in
 	// `avce`
-	epochProvision = epochProvision.Mul(sdk.NewDecFromInt(evmostypes.PowerReduction))
+	epochProvision = epochProvision.Mul(sdk.NewDecFromInt(vincetypes.PowerReduction))
 	return epochProvision
 }

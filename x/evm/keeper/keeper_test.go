@@ -6,7 +6,7 @@ import (
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/keeper"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/statedb"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
@@ -124,7 +124,7 @@ func (suite *KeeperTestSuite) TestGetAccountStorage() {
 			tc.malleate()
 			i := 0
 			suite.app.AccountKeeper.IterateAccounts(suite.ctx, func(account authtypes.AccountI) bool {
-				ethAccount, ok := account.(evmostypes.EthAccountI)
+				ethAccount, ok := account.(vincetypes.EthAccountI)
 				if !ok {
 					// ignore non EthAccounts
 					return false

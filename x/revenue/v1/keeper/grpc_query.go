@@ -27,7 +27,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/cosmos/cosmos-sdk/types/query"
 	"github.com/ethereum/go-ethereum/common"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 
 	"github.com/AyrisDev/vinceChain/v12/x/revenue/v1/types"
 )
@@ -85,7 +85,7 @@ func (k Keeper) Revenue(
 	}
 
 	// check if the contract is a non-zero hex address
-	if err := evmostypes.ValidateNonZeroAddress(req.ContractAddress); err != nil {
+	if err := vincetypes.ValidateNonZeroAddress(req.ContractAddress); err != nil {
 		return nil, status.Errorf(
 			codes.InvalidArgument,
 			"invalid format for contract %s, should be non-zero hex ('0x...')", req.ContractAddress,

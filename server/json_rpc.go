@@ -30,7 +30,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/rpc"
 
 	"github.com/AyrisDev/vinceChain/v12/server/config"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 // StartJSONRPC starts the JSON-RPC server
@@ -39,7 +39,7 @@ func StartJSONRPC(ctx *server.Context,
 	tmRPCAddr,
 	tmEndpoint string,
 	config *config.Config,
-	indexer evmostypes.EVMTxIndexer,
+	indexer vincetypes.EVMTxIndexer,
 ) (*http.Server, chan struct{}, error) {
 	tmWsClient := ConnectTmWS(tmRPCAddr, tmEndpoint, ctx.Logger)
 

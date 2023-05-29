@@ -7,7 +7,7 @@ import (
 
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/x/evm"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/statedb"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/types"
@@ -118,7 +118,7 @@ func (suite *EvmTestSuite) TestInitGenesis() {
 		{
 			"ignore empty account code checking with non-empty codehash",
 			func() {
-				ethAcc := &evmostypes.EthAccount{
+				ethAcc := &vincetypes.EthAccount{
 					BaseAccount: authtypes.NewBaseAccount(address.Bytes(), nil, 0, 0),
 					CodeHash:    common.BytesToHash([]byte{1, 2, 3}).Hex(),
 				}

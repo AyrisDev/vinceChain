@@ -24,7 +24,7 @@ import (
 	"github.com/ethereum/go-ethereum/core"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 
 	"github.com/AyrisDev/vinceChain/v12/x/incentives/types"
@@ -62,8 +62,8 @@ func (k Keeper) PostTxProcessing(ctx sdk.Context, msg core.Message, receipt *eth
 		return nil
 	}
 
-	ethAccount, ok := acc.(evmostypes.EthAccountI)
-	if ok && ethAccount.Type() == evmostypes.AccountTypeContract {
+	ethAccount, ok := acc.(vincetypes.EthAccountI)
+	if ok && ethAccount.Type() == vincetypes.AccountTypeContract {
 		return nil
 	}
 

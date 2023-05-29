@@ -25,7 +25,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/store/prefix"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/statedb"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/types"
 )
@@ -132,7 +132,7 @@ func (k *Keeper) SetAccount(ctx sdk.Context, addr common.Address, account stated
 
 	codeHash := common.BytesToHash(account.CodeHash)
 
-	if ethAcct, ok := acct.(evmostypes.EthAccountI); ok {
+	if ethAcct, ok := acct.(vincetypes.EthAccountI); ok {
 		if err := ethAcct.SetCodeHash(codeHash); err != nil {
 			return err
 		}
@@ -202,7 +202,7 @@ func (k *Keeper) DeleteAccount(ctx sdk.Context, addr common.Address) error {
 	}
 
 	// NOTE: only Ethereum accounts (contracts) can be selfdestructed
-	_, ok := acct.(evmostypes.EthAccountI)
+	_, ok := acct.(vincetypes.EthAccountI)
 	if !ok {
 		return errorsmod.Wrapf(types.ErrInvalidAccount, "type %T, address %s", acct, addr)
 	}

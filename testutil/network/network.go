@@ -69,7 +69,7 @@ import (
 
 	"github.com/AyrisDev/vinceChain/v12/encoding"
 	"github.com/AyrisDev/vinceChain/v12/server/config"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 )
 
@@ -127,10 +127,10 @@ func DefaultConfig() Config {
 		ChainID:           fmt.Sprintf("evmos_%d-1", tmrand.Int63n(9999999999999)+1),
 		NumValidators:     4,
 		BondDenom:         "avce",
-		MinGasPrices:      fmt.Sprintf("0.000006%s", evmostypes.AttoEvmos),
-		AccountTokens:     sdk.TokensFromConsensusPower(1000000000000000000, evmostypes.PowerReduction),
-		StakingTokens:     sdk.TokensFromConsensusPower(500000000000000000, evmostypes.PowerReduction),
-		BondedTokens:      sdk.TokensFromConsensusPower(100000000000000000, evmostypes.PowerReduction),
+		MinGasPrices:      fmt.Sprintf("0.000006%s", vincetypes.AttoEvmos),
+		AccountTokens:     sdk.TokensFromConsensusPower(1000000000000000000, vincetypes.PowerReduction),
+		StakingTokens:     sdk.TokensFromConsensusPower(500000000000000000, vincetypes.PowerReduction),
+		BondedTokens:      sdk.TokensFromConsensusPower(100000000000000000, vincetypes.PowerReduction),
 		PruningStrategy:   pruningtypes.PruningOptionNothing,
 		CleanupDir:        true,
 		SigningAlgo:       string(hd.EthSecp256k1Type),
@@ -233,7 +233,7 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 	l.Log("acquiring test network lock")
 	lock.Lock()
 
-	if !evmostypes.IsValidChainID(cfg.ChainID) {
+	if !vincetypes.IsValidChainID(cfg.ChainID) {
 		return nil, fmt.Errorf("invalid chain-id: %s", cfg.ChainID)
 	}
 
@@ -428,7 +428,7 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 
 		genFiles = append(genFiles, tmCfg.GenesisFile())
 		genBalances = append(genBalances, banktypes.Balance{Address: addr.String(), Coins: balances.Sort()})
-		genAccounts = append(genAccounts, &evmostypes.EthAccount{
+		genAccounts = append(genAccounts, &vincetypes.EthAccount{
 			BaseAccount: authtypes.NewBaseAccount(addr, nil, 0, 0),
 			CodeHash:    common.BytesToHash(evmtypes.EmptyCodeHash).Hex(),
 		})
@@ -486,7 +486,7 @@ func New(l Logger, baseDir string, cfg Config) (*Network, error) {
 			return nil, err
 		}
 
-		customAppTemplate, _ := config.AppConfig(evmostypes.AttoEvmos)
+		customAppTemplate, _ := config.AppConfig(vincetypes.AttoEvmos)
 		srvconfig.SetConfigTemplate(customAppTemplate)
 		srvconfig.WriteConfigFile(filepath.Join(nodeDir, "config/app.toml"), appCfg)
 

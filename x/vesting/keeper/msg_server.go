@@ -21,7 +21,7 @@ import (
 	"strconv"
 	"time"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 
 	"github.com/armon/go-metrics"
 
@@ -318,7 +318,7 @@ func (k Keeper) ConvertVestingAccount(
 		return nil, errorsmod.Wrapf(errortypes.ErrInvalidRequest, "vesting coins still left in account: %s", msg.VestingAddress)
 	}
 
-	ethAccount := evmostypes.ProtoAccount().(*evmostypes.EthAccount)
+	ethAccount := vincetypes.ProtoAccount().(*vincetypes.EthAccount)
 	ethAccount.BaseAccount = vestingAcc.BaseAccount
 	k.accountKeeper.SetAccount(ctx, ethAccount)
 

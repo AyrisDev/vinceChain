@@ -18,7 +18,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
 	"github.com/AyrisDev/vinceChain/v12/testutil"
 	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/utils"
 	"github.com/AyrisDev/vinceChain/v12/x/claims/types"
 	evm "github.com/AyrisDev/vinceChain/v12/x/evm/types"
@@ -107,8 +107,8 @@ func (suite *KeeperTestSuite) CommitAfter(t time.Duration) {
 	suite.queryClientEvm = evm.NewQueryClient(queryHelperEvm)
 }
 
-func newEthAccount(baseAccount *authtypes.BaseAccount) evmostypes.EthAccount {
-	return evmostypes.EthAccount{
+func newEthAccount(baseAccount *authtypes.BaseAccount) vincetypes.EthAccount {
+	return vincetypes.EthAccount{
 		BaseAccount: baseAccount,
 		CodeHash:    common.BytesToHash(crypto.Keccak256(nil)).String(),
 	}

@@ -29,7 +29,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/encoding"
 	"github.com/AyrisDev/vinceChain/v12/testutil"
 	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 	feemarkettypes "github.com/AyrisDev/vinceChain/v12/x/feemarket/types"
 	"github.com/stretchr/testify/require"
@@ -171,7 +171,7 @@ func (suite *KeeperTestSuite) SetupAppWithT(checkTx bool, t require.TestingT) {
 	evmtypes.RegisterQueryServer(queryHelper, suite.app.EvmKeeper)
 	suite.queryClient = evmtypes.NewQueryClient(queryHelper)
 
-	acc := &evmostypes.EthAccount{
+	acc := &vincetypes.EthAccount{
 		BaseAccount: authtypes.NewBaseAccount(sdk.AccAddress(suite.address.Bytes()), nil, 0, 0),
 		CodeHash:    common.BytesToHash(crypto.Keccak256(nil)).String(),
 	}

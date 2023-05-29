@@ -35,7 +35,7 @@ import (
 	"github.com/cosmos/ibc-go/v6/testing/mock"
 
 	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/utils"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 )
@@ -75,12 +75,12 @@ func NewTestChain(t *testing.T, coord *ibcgotesting.Coordinator, chainID string)
 
 	baseAcc := authtypes.NewBaseAccount(senderPrivKey.PubKey().Address().Bytes(), senderPrivKey.PubKey(), 0, 0)
 
-	acc := &evmostypes.EthAccount{
+	acc := &vincetypes.EthAccount{
 		BaseAccount: baseAcc,
 		CodeHash:    common.BytesToHash(evmtypes.EmptyCodeHash).Hex(),
 	}
 
-	amount := sdk.TokensFromConsensusPower(1, evmostypes.PowerReduction)
+	amount := sdk.TokensFromConsensusPower(1, vincetypes.PowerReduction)
 
 	balance := banktypes.Balance{
 		Address: acc.GetAddress().String(),

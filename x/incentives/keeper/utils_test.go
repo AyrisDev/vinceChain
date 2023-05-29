@@ -24,7 +24,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/server/config"
 	"github.com/AyrisDev/vinceChain/v12/testutil"
 	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/utils"
 	epochstypes "github.com/AyrisDev/vinceChain/v12/x/epochs/types"
 	evm "github.com/AyrisDev/vinceChain/v12/x/evm/types"
@@ -103,7 +103,7 @@ func (suite *KeeperTestSuite) DoSetupTest(t require.TestingT) {
 		suite.app.EpochsKeeper.SetEpochInfo(suite.ctx, epoch)
 	}
 
-	acc := &evmostypes.EthAccount{
+	acc := &vincetypes.EthAccount{
 		BaseAccount: authtypes.NewBaseAccount(sdk.AccAddress(suite.address.Bytes()), nil, 0, 0),
 		CodeHash:    common.BytesToHash(crypto.Keccak256(nil)).String(),
 	}

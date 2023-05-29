@@ -15,7 +15,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
 	"github.com/AyrisDev/vinceChain/v12/testutil"
 	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	inflationtypes "github.com/AyrisDev/vinceChain/v12/x/inflation/types"
 
 	"github.com/AyrisDev/vinceChain/v12/x/claims/types"
@@ -760,8 +760,8 @@ func (suite *KeeperTestSuite) TestDelegationAutoWithdrawAndDelegateMore() {
 	err = suite.app.StakingKeeper.AfterValidatorCreated(suite.ctx, validator.GetOperator())
 	suite.Require().NoError(err)
 
-	validator, _ = validator.AddTokensFromDel(sdk.TokensFromConsensusPower(1, evmostypes.PowerReduction))
-	delAmount := sdk.TokensFromConsensusPower(1, evmostypes.PowerReduction)
+	validator, _ = validator.AddTokensFromDel(sdk.TokensFromConsensusPower(1, vincetypes.PowerReduction))
+	delAmount := sdk.TokensFromConsensusPower(1, vincetypes.PowerReduction)
 
 	err = testutil.FundAccount(suite.ctx, suite.app.BankKeeper, addrs[1], sdk.NewCoins(sdk.NewCoin(params.GetClaimsDenom(), delAmount)))
 	suite.Require().NoError(err)
@@ -1077,7 +1077,7 @@ func (suite *KeeperTestSuite) TestClawbackEmptyAccountsAirdrop() {
 		addr, err := sdk.AccAddressFromBech32(tc.address)
 		suite.Require().NoError(err, tc.name)
 
-		acc := &evmostypes.EthAccount{
+		acc := &vincetypes.EthAccount{
 			BaseAccount: authtypes.NewBaseAccount(sdk.AccAddress(addr.Bytes()), nil, 0, 0),
 			CodeHash:    common.BytesToHash(crypto.Keccak256(nil)).String(),
 		}

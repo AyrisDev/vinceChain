@@ -22,7 +22,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	govv1beta1 "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 // constants
@@ -69,7 +69,7 @@ func (*RegisterIncentiveProposal) ProposalType() string {
 
 // ValidateBasic performs a stateless check of the proposal fields
 func (rip *RegisterIncentiveProposal) ValidateBasic() error {
-	if err := evmostypes.ValidateAddress(rip.Contract); err != nil {
+	if err := vincetypes.ValidateAddress(rip.Contract); err != nil {
 		return err
 	}
 
@@ -136,7 +136,7 @@ func (*CancelIncentiveProposal) ProposalType() string {
 
 // ValidateBasic performs a stateless check of the proposal fields
 func (rip *CancelIncentiveProposal) ValidateBasic() error {
-	if err := evmostypes.ValidateAddress(rip.Contract); err != nil {
+	if err := vincetypes.ValidateAddress(rip.Contract); err != nil {
 		return err
 	}
 

@@ -36,7 +36,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/app"
 	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
 	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/x/evm"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/statedb"
 	"github.com/AyrisDev/vinceChain/v12/x/evm/types"
@@ -148,7 +148,7 @@ func (suite *EvmTestSuite) DoSetupTest(t require.TestingT) {
 	queryHelper := baseapp.NewQueryServerTestHelper(suite.ctx, suite.app.InterfaceRegistry())
 	types.RegisterQueryServer(queryHelper, suite.app.EvmKeeper)
 
-	acc := &evmostypes.EthAccount{
+	acc := &vincetypes.EthAccount{
 		BaseAccount: authtypes.NewBaseAccount(sdk.AccAddress(address.Bytes()), nil, 0, 0),
 		CodeHash:    common.BytesToHash(crypto.Keccak256(nil)).String(),
 	}

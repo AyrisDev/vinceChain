@@ -19,7 +19,7 @@ package types
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 // NewRevenue returns an instance of Revenue. If the provided withdrawer
@@ -60,7 +60,7 @@ func (fs Revenue) GetWithdrawerAddr() sdk.AccAddress {
 
 // Validate performs a stateless validation of a Revenue
 func (fs Revenue) Validate() error {
-	if err := evmostypes.ValidateNonZeroAddress(fs.ContractAddress); err != nil {
+	if err := vincetypes.ValidateNonZeroAddress(fs.ContractAddress); err != nil {
 		return err
 	}
 

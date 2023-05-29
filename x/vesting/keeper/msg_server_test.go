@@ -5,7 +5,7 @@ import (
 	"time"
 
 	vestingexported "github.com/cosmos/cosmos-sdk/x/auth/vesting/exported"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -578,7 +578,7 @@ func (suite *KeeperTestSuite) TestConvertVestingAccount() {
 			_, ok := account.(vestingexported.VestingAccount)
 			suite.Require().False(ok)
 
-			_, ok = account.(evmostypes.EthAccountI)
+			_, ok = account.(vincetypes.EthAccountI)
 			suite.Require().True(ok)
 
 		} else {

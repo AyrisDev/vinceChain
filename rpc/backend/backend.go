@@ -32,7 +32,7 @@ import (
 	"github.com/ethereum/go-ethereum/signer/core/apitypes"
 	rpctypes "github.com/AyrisDev/vinceChain/v12/rpc/types"
 	"github.com/AyrisDev/vinceChain/v12/server/config"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 	"github.com/tendermint/tendermint/libs/log"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
@@ -115,8 +115,8 @@ type EVMBackend interface {
 
 	// Tx Info
 	GetTransactionByHash(txHash common.Hash) (*rpctypes.RPCTransaction, error)
-	GetTxByEthHash(txHash common.Hash) (*evmostypes.TxResult, error)
-	GetTxByTxIndex(height int64, txIndex uint) (*evmostypes.TxResult, error)
+	GetTxByEthHash(txHash common.Hash) (*vincetypes.TxResult, error)
+	GetTxByTxIndex(height int64, txIndex uint) (*vincetypes.TxResult, error)
 	GetTransactionByBlockAndIndex(block *tmrpctypes.ResultBlock, idx hexutil.Uint) (*rpctypes.RPCTransaction, error)
 	GetTransactionReceipt(hash common.Hash) (map[string]interface{}, error)
 	GetTransactionByBlockHashAndIndex(hash common.Hash, idx hexutil.Uint) (*rpctypes.RPCTransaction, error)
@@ -153,7 +153,7 @@ type Backend struct {
 	chainID             *big.Int
 	cfg                 config.Config
 	allowUnprotectedTxs bool
-	indexer             evmostypes.EVMTxIndexer
+	indexer             vincetypes.EVMTxIndexer
 }
 
 // NewBackend creates a new Backend instance for cosmos and ethereum namespaces
@@ -162,9 +162,9 @@ func NewBackend(
 	logger log.Logger,
 	clientCtx client.Context,
 	allowUnprotectedTxs bool,
-	indexer evmostypes.EVMTxIndexer,
+	indexer vincetypes.EVMTxIndexer,
 ) *Backend {
-	chainID, err := evmostypes.ParseChainID(clientCtx.ChainID)
+	chainID, err := vincetypes.ParseChainID(clientCtx.ChainID)
 	if err != nil {
 		panic(err)
 	}

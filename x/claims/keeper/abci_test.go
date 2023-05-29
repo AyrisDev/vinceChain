@@ -11,7 +11,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 	testutil "github.com/AyrisDev/vinceChain/v12/testutil"
 	utiltx "github.com/AyrisDev/vinceChain/v12/testutil/tx"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 	"github.com/AyrisDev/vinceChain/v12/x/claims/types"
 	vestingtypes "github.com/AyrisDev/vinceChain/v12/x/vesting/types"
 )
@@ -145,7 +145,7 @@ func (suite *KeeperTestSuite) TestClawbackEmptyAccounts() {
 			types.GenesisDust,
 			func() {
 				baseAccount := authtypes.NewBaseAccount(addr, nil, 0, 0)
-				ethAccount := evmostypes.EthAccount{
+				ethAccount := vincetypes.EthAccount{
 					BaseAccount: baseAccount,
 					CodeHash:    common.BytesToHash(crypto.Keccak256(nil)).String(),
 				}

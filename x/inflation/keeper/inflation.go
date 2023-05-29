@@ -19,7 +19,7 @@ package keeper
 import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 
 	utils "github.com/AyrisDev/vinceChain/v12/utils"
 	incentivestypes "github.com/AyrisDev/vinceChain/v12/x/incentives/types"
@@ -27,7 +27,7 @@ import (
 )
 
 // 200M token at year 4 allocated to the team
-var teamAlloc = sdk.NewInt(200_000_000).Mul(evmostypes.PowerReduction)
+var teamAlloc = sdk.NewInt(200_000_000).Mul(vincetypes.PowerReduction)
 
 // MintAndAllocateInflation performs inflation minting and allocation
 func (k Keeper) MintAndAllocateInflation(

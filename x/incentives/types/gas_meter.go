@@ -18,7 +18,7 @@ package types
 
 import (
 	"github.com/ethereum/go-ethereum/common"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 // NewGasMeter returns an instance of GasMeter
@@ -36,9 +36,9 @@ func NewGasMeter(
 
 // Validate performs a stateless validation of a Incentive
 func (gm GasMeter) Validate() error {
-	if err := evmostypes.ValidateAddress(gm.Contract); err != nil {
+	if err := vincetypes.ValidateAddress(gm.Contract); err != nil {
 		return err
 	}
 
-	return evmostypes.ValidateAddress(gm.Participant)
+	return vincetypes.ValidateAddress(gm.Participant)
 }

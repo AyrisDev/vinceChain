@@ -21,7 +21,7 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	errortypes "github.com/cosmos/cosmos-sdk/types/errors"
 	"github.com/ethereum/go-ethereum/common"
-	evmostypes "github.com/AyrisDev/vinceChain/v12/types"
+	vincetypes "github.com/AyrisDev/vinceChain/v12/types"
 )
 
 var (
@@ -69,7 +69,7 @@ func (msg MsgRegisterRevenue) ValidateBasic() error {
 		return errorsmod.Wrapf(err, "invalid deployer address %s", msg.DeployerAddress)
 	}
 
-	if err := evmostypes.ValidateNonZeroAddress(msg.ContractAddress); err != nil {
+	if err := vincetypes.ValidateNonZeroAddress(msg.ContractAddress); err != nil {
 		return errorsmod.Wrapf(err, "invalid contract address %s", msg.ContractAddress)
 	}
 
@@ -124,7 +124,7 @@ func (msg MsgCancelRevenue) ValidateBasic() error {
 		return errorsmod.Wrapf(err, "invalid deployer address %s", msg.DeployerAddress)
 	}
 
-	if err := evmostypes.ValidateNonZeroAddress(msg.ContractAddress); err != nil {
+	if err := vincetypes.ValidateNonZeroAddress(msg.ContractAddress); err != nil {
 		return errorsmod.Wrapf(err, "invalid contract address %s", msg.ContractAddress)
 	}
 
@@ -167,7 +167,7 @@ func (msg MsgUpdateRevenue) ValidateBasic() error {
 		return errorsmod.Wrapf(err, "invalid deployer address %s", msg.DeployerAddress)
 	}
 
-	if err := evmostypes.ValidateNonZeroAddress(msg.ContractAddress); err != nil {
+	if err := vincetypes.ValidateNonZeroAddress(msg.ContractAddress); err != nil {
 		return errorsmod.Wrapf(err, "invalid contract address %s", msg.ContractAddress)
 	}
 
