@@ -271,8 +271,8 @@ var (
 )
 
 var (
-	_ servertypes.Application = (*Evmos)(nil)
-	_ ibctesting.TestingApp   = (*Evmos)(nil)
+	_ servertypes.Application = (*Vince)(nil)
+	_ ibctesting.TestingApp   = (*Vince)(nil)
 )
 
 // Evmos implements an extended ABCI application. It is an application
@@ -398,7 +398,7 @@ func NewVince(
 		os.Exit(1)
 	}
 
-	app := &Evmos{
+	app := &Vince{
 		BaseApp:           bApp,
 		cdc:               cdc,
 		appCodec:          appCodec,

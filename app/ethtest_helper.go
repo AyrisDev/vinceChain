@@ -58,12 +58,12 @@ var EthDefaultConsensusParams = &abci.ConsensusParams{
 }
 
 // EthSetup initializes a new EvmosApp. A Nop logger is set in EvmosApp.
-func EthSetup(isCheckTx bool, patchGenesis func(*Evmos, simapp.GenesisState) simapp.GenesisState) *Evmos {
+func EthSetup(isCheckTx bool, patchGenesis func(*Vince, simapp.GenesisState) simapp.GenesisState) *Vince {
 	return EthSetupWithDB(isCheckTx, patchGenesis, dbm.NewMemDB())
 }
 
 // EthSetupWithDB initializes a new EvmosApp. A Nop logger is set in EvmosApp.
-func EthSetupWithDB(isCheckTx bool, patchGenesis func(*Evmos, simapp.GenesisState) simapp.GenesisState, db dbm.DB) *Evmos {
+func EthSetupWithDB(isCheckTx bool, patchGenesis func(*Vince, simapp.GenesisState) simapp.GenesisState, db dbm.DB) *Vince {
 	app := NewEvmos(log.NewNopLogger(),
 		db,
 		nil,
