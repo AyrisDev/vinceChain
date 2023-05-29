@@ -6,7 +6,7 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y $PACKAGES
 
 # Set working directory for the build
-WORKDIR /go/src/github.com/evmos/evmos
+WORKDIR /go/src/github.com/AyrisDev/vinceChain
 
 # Add source files
 COPY . .

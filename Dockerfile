@@ -1,6 +1,6 @@
 FROM golang:1.20.2-bullseye AS build-env
 
-WORKDIR /go/src/github.com/evmos/evmos
+WORKDIR /go/src/github.com/AyrisDev/vinceChain
 
 RUN apt-get update -y
 RUN apt-get install git -y

@@ -2,11 +2,11 @@ FROM golang:1.20.0-bullseye AS build-env
 
 ARG BRANCH_NAME
 
-WORKDIR /go/src/github.com/evmos/
+WORKDIR /go/src/github.com/AyrisDev/
 
-RUN git clone "https://github.com/evmos/evmos.git"
+RUN git clone "https://github.com/AyrisDev/vinceChain.git"
 
-WORKDIR /go/src/github.com/evmos/evmos
+WORKDIR /go/src/github.com/AyrisDev/vinceChain
 
 RUN apt-get update -y
 
@@ -21,7 +21,7 @@ RUN apt-get update \
 && apt-get clean \
 && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /go/src/github.com/evmos/evmos
+WORKDIR /go/src/github.com/AyrisDev/vinceChain
 
 COPY ./init-node.sh .
 

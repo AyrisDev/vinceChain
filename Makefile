@@ -6,13 +6,13 @@ TMVERSION := $(shell go list -m github.com/tendermint/tendermint | sed 's:.* ::'
 COMMIT := $(shell git log -1 --format='%H')
 LEDGER_ENABLED ?= true
 BINDIR ?= $(GOPATH)/bin
-EVMOS_BINARY = vinced
-EVMOS_DIR = evmos
+VINCE_BINARY = vinced
+VINCE_DIR = vince
 BUILDDIR ?= $(CURDIR)/build
-HTTPS_GIT := https://github.com/evmos/evmos.git
+HTTPS_GIT := https://github.com/AyrisDev/vinceChain.git
 DOCKER := $(shell which docker)
 NAMESPACE := tharsishq
-PROJECT := evmos
+PROJECT := vince
 DOCKER_IMAGE := $(NAMESPACE)/$(PROJECT)
 COMMIT_HASH := $(shell git rev-parse --short=7 HEAD)
 DOCKER_TAG := $(COMMIT_HASH)
@@ -61,8 +61,8 @@ build_tags := $(strip $(build_tags))
 
 # process linker flags
 
-ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=evmos \
-          -X github.com/cosmos/cosmos-sdk/version.AppName=$(EVMOS_BINARY) \
+ldflags = -X github.com/cosmos/cosmos-sdk/version.Name=vince \
+          -X github.com/cosmos/cosmos-sdk/version.AppName=$(VINCE_BINARY) \
           -X github.com/cosmos/cosmos-sdk/version.Version=$(VERSION) \
           -X github.com/cosmos/cosmos-sdk/version.Commit=$(COMMIT) \
           -X github.com/tendermint/tendermint/version.TMCoreSemVer=$(TMVERSION)
@@ -148,12 +148,12 @@ build-docker:
 	$(DOCKER) tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
 	# docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:${COMMIT_HASH}
 	# update old container
-	$(DOCKER) rm evmos || true
+	$(DOCKER) rm vince || true
 	# create a new container from the latest image
-	$(DOCKER) create --name evmos -t -i ${DOCKER_IMAGE}:latest evmos
+	$(DOCKER) create --name vince -t -i ${DOCKER_IMAGE}:latest vince
 	# move the binaries to the ./build directory
 	mkdir -p ./build/
-	$(DOCKER) cp evmos:/usr/bin/vinced ./build/
+	$(DOCKER) cp vince:/usr/bin/vinced ./build/
 
 push-docker: build-docker
 	$(DOCKER) push ${DOCKER_IMAGE}:${DOCKER_TAG}
@@ -279,7 +279,7 @@ update-swagger-docs: statik
 .PHONY: update-swagger-docs
 
 godocs:
-	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/evmos/evmos"
+	@echo "--> Wait a few seconds and visit http://localhost:6060/pkg/github.com/AyrisDev/vinceChain"
 	godoc -http=:6060
 
 ###############################################################################
@@ -489,7 +489,7 @@ localnet-build:
 
 # Start a 4-node testnet locally
 localnet-start: localnet-stop localnet-build
-	@if ! [ -f build/node0/$(EVMOS_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/evmos:Z evmos/node "./vinced testnet init-files --v 4 -o /evmos --keyring-backend=test --starting-ip-address 192.167.10.2"; fi
+	@if ! [ -f build/node0/$(VINCE_BINARY)/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/vince:Z vince/node "./vinced testnet init-files --v 4 -o /vince --keyring-backend=test --starting-ip-address 192.167.10.2"; fi
 	docker-compose up -d
 
 # Stop testnet
@@ -505,15 +505,15 @@ localnet-clean:
 localnet-unsafe-reset:
 	docker-compose down
 ifeq ($(OS),Windows_NT)
-	@docker run --rm -v $(CURDIR)\build\node0\vinced:/evmos\Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
-	@docker run --rm -v $(CURDIR)\build\node1\vinced:/evmos\Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
-	@docker run --rm -v $(CURDIR)\build\node2\vinced:/evmos\Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
-	@docker run --rm -v $(CURDIR)\build\node3\vinced:/evmos\Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
+	@docker run --rm -v $(CURDIR)\build\node0\vinced:/vince\Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
+	@docker run --rm -v $(CURDIR)\build\node1\vinced:/vince\Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
+	@docker run --rm -v $(CURDIR)\build\node2\vinced:/vince\Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
+	@docker run --rm -v $(CURDIR)\build\node3\vinced:/vince\Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
 else
-	@docker run --rm -v $(CURDIR)/build/node0/vinced:/evmos:Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
-	@docker run --rm -v $(CURDIR)/build/node1/vinced:/evmos:Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
-	@docker run --rm -v $(CURDIR)/build/node2/vinced:/evmos:Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
-	@docker run --rm -v $(CURDIR)/build/node3/vinced:/evmos:Z evmos/node "./vinced tendermint unsafe-reset-all --home=/evmos"
+	@docker run --rm -v $(CURDIR)/build/node0/vinced:/vince:Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
+	@docker run --rm -v $(CURDIR)/build/node1/vinced:/vince:Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
+	@docker run --rm -v $(CURDIR)/build/node2/vinced:/vince:Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
+	@docker run --rm -v $(CURDIR)/build/node3/vinced:/vince:Z vince/node "./vinced tendermint unsafe-reset-all --home=/vince"
 endif
 
 # Clean testnet
@@ -526,7 +526,7 @@ localnet-show-logstream:
 ###                                Releasing                                ###
 ###############################################################################
 
-PACKAGE_NAME:=github.com/evmos/evmos
+PACKAGE_NAME:=github.com/AyrisDev/vinceChain
 GOLANG_CROSS_VERSION  = v1.20
 GOPATH ?= '$(HOME)/go'
 release-dry-run:

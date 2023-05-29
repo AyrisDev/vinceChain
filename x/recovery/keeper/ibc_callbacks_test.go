@@ -43,8 +43,8 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 	// Setup Cosmos <=> Evmos IBC relayer
 	denom := "uatom"
 	sourceChannel := "channel-292"
-	evmosChannel := claimstypes.DefaultAuthorizedChannels[1]
-	path := fmt.Sprintf("%s/%s", transfertypes.PortID, evmosChannel)
+	vinceChannel := claimstypes.DefaultAuthorizedChannels[1]
+	path := fmt.Sprintf("%s/%s", transfertypes.PortID, vinceChannel)
 
 	timeoutHeight := clienttypes.NewHeight(0, 100)
 	disabledTimeoutTimestamp := uint64(0)
@@ -114,7 +114,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", "evmos", ethsecpAddrCosmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -125,7 +125,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", "badba1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms", ethsecpAddrCosmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -136,7 +136,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", ethsecpAddrEvmos, "badbadhf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625", "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -149,7 +149,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, blockedAddr.String(), "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			false,
 			false,
@@ -163,7 +163,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, otherSecpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -180,7 +180,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", ethsecpAddrCosmos, ethsecpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -194,7 +194,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				addr := incentivesAcc.GetAddress().String()
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", addr, addr, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -208,7 +208,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", ethsecpAddrCosmos, ethsecpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			true,
 			false,
@@ -219,7 +219,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 
 				invalidDenom := "ibc/1"
 				coins := sdk.NewCoins(sdk.NewCoin(invalidDenom, sdk.NewInt(1000)))
@@ -239,7 +239,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 			func() {
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			true,
 			true,
@@ -252,7 +252,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 			},
 			true,
 			true,
@@ -264,12 +264,12 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				// Setup Osmosis <=> Evmos IBC relayer
 				denom = "uosmo"
 				sourceChannel = "channel-204"
-				evmosChannel = claimstypes.DefaultAuthorizedChannels[0]
-				path = fmt.Sprintf("%s/%s", transfertypes.PortID, evmosChannel)
+				vinceChannel = claimstypes.DefaultAuthorizedChannels[0]
+				path = fmt.Sprintf("%s/%s", transfertypes.PortID, vinceChannel)
 
 				transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrEvmos, "")
 				bz := transfertypes.ModuleCdc.MustMarshalJSON(&transfer)
-				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+				packet = channeltypes.NewPacket(bz, 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 				// TODO TEST
 			},
 			true,
@@ -303,10 +303,10 @@ func (suite *KeeperTestSuite) TestOnRecvPacket() {
 				Counterparty:   channeltypes.NewCounterparty(transfertypes.PortID, sourceChannel),
 				ConnectionHops: []string{sourceChannel},
 			}
-			suite.app.IBCKeeper.ChannelKeeper.SetChannel(suite.ctx, transfertypes.PortID, evmosChannel, channel)
+			suite.app.IBCKeeper.ChannelKeeper.SetChannel(suite.ctx, transfertypes.PortID, vinceChannel, channel)
 
 			// Set Next Sequence Send
-			suite.app.IBCKeeper.ChannelKeeper.SetNextSequenceSend(suite.ctx, transfertypes.PortID, evmosChannel, 1)
+			suite.app.IBCKeeper.ChannelKeeper.SetNextSequenceSend(suite.ctx, transfertypes.PortID, vinceChannel, 1)
 
 			// Mock the Transferkeeper to always return nil on SendTransfer(), as this
 			// method requires a successful handshake with the counterparty chain.
@@ -514,8 +514,8 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 	// Setup Cosmos <=> Evmos IBC relayer
 	denom := "uatom"
 	sourceChannel := "channel-292"
-	evmosChannel := claimstypes.DefaultAuthorizedChannels[1]
-	path := fmt.Sprintf("%s/%s", transfertypes.PortID, evmosChannel)
+	vinceChannel := claimstypes.DefaultAuthorizedChannels[1]
+	path := fmt.Sprintf("%s/%s", transfertypes.PortID, vinceChannel)
 
 	var mockTransferKeeper *MockTransferKeeper
 	expAck := ibcmock.MockAcknowledgement
@@ -569,7 +569,7 @@ func (suite *KeeperTestSuite) TestOnRecvPacketFailTransfer() {
 			suite.Require().NoError(err)
 
 			transfer := transfertypes.NewFungibleTokenPacketData(denom, "100", secpAddrCosmos, secpAddrEvmos, "")
-			packet := channeltypes.NewPacket(transfer.GetBytes(), 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, evmosChannel, timeoutHeight, 0)
+			packet := channeltypes.NewPacket(transfer.GetBytes(), 100, transfertypes.PortID, sourceChannel, transfertypes.PortID, vinceChannel, timeoutHeight, 0)
 
 			mockTransferKeeper = &MockTransferKeeper{
 				Keeper: suite.app.BankKeeper,

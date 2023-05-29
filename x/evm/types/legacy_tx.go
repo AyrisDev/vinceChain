@@ -214,7 +214,7 @@ func (tx LegacyTx) Validate() error {
 		)
 	}
 
-	if !(chainID.Cmp(big.NewInt(9001)) == 0 || chainID.Cmp(big.NewInt(1903)) == 0) {
+	if !(chainID.Cmp(big.NewInt(1904)) == 0 || chainID.Cmp(big.NewInt(1903)) == 0) {
 		return errorsmod.Wrapf(
 			errortypes.ErrInvalidChainID,
 			"chain ID must be 1903 or 1904 on Vince, got %s", chainID,
