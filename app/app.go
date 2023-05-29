@@ -338,7 +338,7 @@ type Vince struct {
 	tpsCounter *tpsCounter
 }
 
-// NewEvmos returns a reference to a new initialized Ethermint application.
+// NewVince returns a reference to a new initialized Ethermint application.
 func NewVince(
 	logger log.Logger,
 	db dbm.DB,

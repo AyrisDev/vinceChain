@@ -44,9 +44,9 @@ const (
 // PowerReduction defines the default power reduction value for staking
 var PowerReduction = sdkmath.NewIntFromBigInt(new(big.Int).Exp(big.NewInt(10), big.NewInt(BaseDenomUnit), nil))
 
-// NewEvmosCoin is a utility function that returns an "avce" coin with the given sdkmath.Int amount.
+// NewVinceCoin is a utility function that returns an "avce" coin with the given sdkmath.Int amount.
 // The function will panic if the provided amount is negative.
-func NewEvmosCoin(amount sdkmath.Int) sdk.Coin {
+func NewVinceCoin(amount sdkmath.Int) sdk.Coin {
 	return sdk.NewCoin(AttoEvmos, amount)
 }
 
@@ -56,8 +56,8 @@ func NewvincedecCoin(amount sdkmath.Int) sdk.DecCoin {
 	return sdk.NewDecCoin(AttoEvmos, amount)
 }
 
-// NewEvmosCoinInt64 is a utility function that returns an "avce" coin with the given int64 amount.
+// NewVinceCoinInt64 is a utility function that returns an "avce" coin with the given int64 amount.
 // The function will panic if the provided amount is negative.
-func NewEvmosCoinInt64(amount int64) sdk.Coin {
+func NewVinceCoinInt64(amount int64) sdk.Coin {
 	return sdk.NewInt64Coin(AttoEvmos, amount)
 }

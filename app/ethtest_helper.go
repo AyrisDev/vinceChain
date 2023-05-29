@@ -64,7 +64,7 @@ func EthSetup(isCheckTx bool, patchGenesis func(*Vince, simapp.GenesisState) sim
 
 // EthSetupWithDB initializes a new EvmosApp. A Nop logger is set in EvmosApp.
 func EthSetupWithDB(isCheckTx bool, patchGenesis func(*Vince, simapp.GenesisState) simapp.GenesisState, db dbm.DB) *Vince {
-	app := NewEvmos(log.NewNopLogger(),
+	app := NewVince(log.NewNopLogger(),
 		db,
 		nil,
 		true,
