@@ -8,8 +8,8 @@ const (
 	// LocalVersionTag defines the docker image ImageTag when building locally
 	LocalVersionTag = "latest"
 
-	// tharsisRepo is the docker hub repository that contains the Evmos images pulled during tests
-	tharsisRepo = "tharsishq/evmos"
+	// tharsisRepo is the docker hub repository that contains the vince images pulled during tests
+	tharsisRepo = "tharsishq/vince"
 
 	// upgradesPath is the relative path from this folder to the app/upgrades folder
 	upgradesPath = "../../../app/upgrades"

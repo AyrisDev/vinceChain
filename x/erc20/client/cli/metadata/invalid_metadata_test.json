@@ -8,14 +8,14 @@
           "exponent": 0
         },
         {
-          "denom": "evmos",
+          "denom": "vince",
           "exponent": 18
         }
       ],
       "base": "avce",
       "display": "avce",
       "name": "avce",
-      "symbol": "EVMOS"
+      "symbol": "vince"
     }
   ]
 }

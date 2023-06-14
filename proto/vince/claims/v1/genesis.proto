@@ -1,7 +1,7 @@
 syntax = "proto3";
-package evmos.claims.v1;
+package vince.claims.v1;
 
-import "evmos/claims/v1/claims.proto";
+import "vince/claims/v1/claims.proto";
 import "gogoproto/gogo.proto";
 import "google/protobuf/duration.proto";
 import "google/protobuf/timestamp.proto";

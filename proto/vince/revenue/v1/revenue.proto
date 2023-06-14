@@ -1,5 +1,5 @@
 syntax = "proto3";
-package evmos.revenue.v1;
+package vince.revenue.v1;
 
 option go_package = "github.com/AyrisDev/vinceChain/v12/x/revenue/v1/types";
 

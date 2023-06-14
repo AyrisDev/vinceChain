@@ -153,7 +153,7 @@ func (suite *UpgradeTestSuite) TestMigrateEscrowAcc() {
 func (suite *UpgradeTestSuite) TestDistributeRewards() {
 	// define constants
 	mainnetChainID := utils.MainnetChainID + "-4"
-	communityPool := sdk.MustAccAddressFromBech32("evmos1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8974jnh")
+	communityPool := sdk.MustAccAddressFromBech32("vince1jv65s3grqf6v6jl3dp4t6c9t9rk99cd8974jnh")
 	fundingAcc := sdk.MustAccAddressFromBech32(v11.FundingAccount)
 
 	// checks on reward amounts
@@ -188,7 +188,7 @@ func (suite *UpgradeTestSuite) TestDistributeRewards() {
 	suite.Require().Equal(expRewards, actualRewards)
 
 	expCommPoolBalance := balance.Sub(expRewards)
-	noRewardAddr := sdk.MustAccAddressFromBech32("evmos1009egsf8sk3puq3aynt8eymmcqnneezkkvceav")
+	noRewardAddr := sdk.MustAccAddressFromBech32("vince1009egsf8sk3puq3aynt8eymmcqnneezkkvceav")
 
 	testCases := []struct {
 		name               string

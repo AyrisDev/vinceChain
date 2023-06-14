@@ -39,30 +39,30 @@ func CreatePacket(amount, denom, sender, receiver, srcPort, srcChannel, dstPort,
 func (suite *IBCTestingSuite) SetupTest() {
 	// initializes 3 test chains
 	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 1, 2)
-	suite.EvmosChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(1))
+	suite.vinceChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(1))
 	suite.IBCOsmosisChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(2))
 	suite.IBCCosmosChain = suite.coordinator.GetChain(ibcgotesting.GetChainID(3))
-	suite.coordinator.CommitNBlocks(suite.EvmosChain, 2)
+	suite.coordinator.CommitNBlocks(suite.vinceChain, 2)
 	suite.coordinator.CommitNBlocks(suite.IBCOsmosisChain, 2)
 	suite.coordinator.CommitNBlocks(suite.IBCCosmosChain, 2)
 
-	// Mint coins locked on the evmos account generated with secp.
+	// Mint coins locked on the vince account generated with secp.
 	amt, ok := sdk.NewIntFromString("1000000000000000000000")
 	suite.Require().True(ok)
-	coinEvmos := sdk.NewCoin(utils.BaseDenom, amt)
-	coins := sdk.NewCoins(coinEvmos)
-	err := suite.EvmosChain.App.(*app.Vince).BankKeeper.MintCoins(suite.EvmosChain.GetContext(), inflationtypes.ModuleName, coins)
+	coinvince := sdk.NewCoin(utils.BaseDenom, amt)
+	coins := sdk.NewCoins(coinvince)
+	err := suite.vinceChain.App.(*app.Vince).BankKeeper.MintCoins(suite.vinceChain.GetContext(), inflationtypes.ModuleName, coins)
 	suite.Require().NoError(err)
 
 	// Fund sender address to pay fees
-	err = suite.EvmosChain.App.(*app.Vince).BankKeeper.SendCoinsFromModuleToAccount(suite.EvmosChain.GetContext(), inflationtypes.ModuleName, suite.EvmosChain.SenderAccount.GetAddress(), coins)
+	err = suite.vinceChain.App.(*app.Vince).BankKeeper.SendCoinsFromModuleToAccount(suite.vinceChain.GetContext(), inflationtypes.ModuleName, suite.vinceChain.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
-	coinEvmos = sdk.NewCoin(utils.BaseDenom, sdk.NewInt(10000))
-	coins = sdk.NewCoins(coinEvmos)
-	err = suite.EvmosChain.App.(*app.Vince).BankKeeper.MintCoins(suite.EvmosChain.GetContext(), inflationtypes.ModuleName, coins)
+	coinvince = sdk.NewCoin(utils.BaseDenom, sdk.NewInt(10000))
+	coins = sdk.NewCoins(coinvince)
+	err = suite.vinceChain.App.(*app.Vince).BankKeeper.MintCoins(suite.vinceChain.GetContext(), inflationtypes.ModuleName, coins)
 	suite.Require().NoError(err)
-	err = suite.EvmosChain.App.(*app.Vince).BankKeeper.SendCoinsFromModuleToAccount(suite.EvmosChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
+	err = suite.vinceChain.App.(*app.Vince).BankKeeper.SendCoinsFromModuleToAccount(suite.vinceChain.GetContext(), inflationtypes.ModuleName, suite.IBCOsmosisChain.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
 	// Mint coins on the osmosis side which we'll use to unlock our avce
@@ -95,30 +95,30 @@ func (suite *IBCTestingSuite) SetupTest() {
 	suite.Require().NoError(err)
 
 	claimparams := claimstypes.DefaultParams()
-	claimparams.AirdropStartTime = suite.EvmosChain.GetContext().BlockTime()
+	claimparams.AirdropStartTime = suite.vinceChain.GetContext().BlockTime()
 	claimparams.EnableClaims = true
-	err = suite.EvmosChain.App.(*app.Vince).ClaimsKeeper.SetParams(suite.EvmosChain.GetContext(), claimparams)
+	err = suite.vinceChain.App.(*app.Vince).ClaimsKeeper.SetParams(suite.vinceChain.GetContext(), claimparams)
 	suite.Require().NoError(err)
 
 	params := types.DefaultParams()
 	params.EnableRecovery = true
-	err = suite.EvmosChain.App.(*app.Vince).RecoveryKeeper.SetParams(suite.EvmosChain.GetContext(), params)
+	err = suite.vinceChain.App.(*app.Vince).RecoveryKeeper.SetParams(suite.vinceChain.GetContext(), params)
 	suite.Require().NoError(err)
 
-	evmParams := suite.EvmosChain.App.(*app.Vince).EvmKeeper.GetParams(s.EvmosChain.GetContext())
+	evmParams := suite.vinceChain.App.(*app.Vince).EvmKeeper.GetParams(s.vinceChain.GetContext())
 	evmParams.EvmDenom = utils.BaseDenom
-	err = suite.EvmosChain.App.(*app.Vince).EvmKeeper.SetParams(s.EvmosChain.GetContext(), evmParams)
+	err = suite.vinceChain.App.(*app.Vince).EvmKeeper.SetParams(s.vinceChain.GetContext(), evmParams)
 	suite.Require().NoError(err)
 
-	suite.pathOsmosisEvmos = ibctesting.NewTransferPath(suite.IBCOsmosisChain, suite.EvmosChain) // clientID, connectionID, channelID empty
-	suite.pathCosmosEvmos = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.EvmosChain)
+	suite.pathOsmosisvince = ibctesting.NewTransferPath(suite.IBCOsmosisChain, suite.vinceChain) // clientID, connectionID, channelID empty
+	suite.pathCosmosvince = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.vinceChain)
 	suite.pathOsmosisCosmos = ibctesting.NewTransferPath(suite.IBCCosmosChain, suite.IBCOsmosisChain)
-	ibctesting.SetupPath(suite.coordinator, suite.pathOsmosisEvmos) // clientID, connectionID, channelID filled
-	ibctesting.SetupPath(suite.coordinator, suite.pathCosmosEvmos)
+	ibctesting.SetupPath(suite.coordinator, suite.pathOsmosisvince) // clientID, connectionID, channelID filled
+	ibctesting.SetupPath(suite.coordinator, suite.pathCosmosvince)
 	ibctesting.SetupPath(suite.coordinator, suite.pathOsmosisCosmos)
-	suite.Require().Equal("07-tendermint-0", suite.pathOsmosisEvmos.EndpointA.ClientID)
-	suite.Require().Equal("connection-0", suite.pathOsmosisEvmos.EndpointA.ConnectionID)
-	suite.Require().Equal("channel-0", suite.pathOsmosisEvmos.EndpointA.ChannelID)
+	suite.Require().Equal("07-tendermint-0", suite.pathOsmosisvince.EndpointA.ClientID)
+	suite.Require().Equal("connection-0", suite.pathOsmosisvince.EndpointA.ConnectionID)
+	suite.Require().Equal("channel-0", suite.pathOsmosisvince.EndpointA.ChannelID)
 }
 
 var timeoutHeight = clienttypes.NewHeight(1000, 1000)
