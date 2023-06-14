@@ -24,17 +24,17 @@ import (
 )
 
 const (
-	// AttoEvmos defines the default coin denomination used in Evmos in:
+	// Attovince defines the default coin denomination used in vince in:
 	//
 	// - Staking parameters: denomination used as stake in the dPoS chain
 	// - Mint parameters: denomination minted due to fee distribution rewards
 	// - Governance parameters: denomination used for spam prevention in proposal deposits
 	// - Crisis parameters: constant fee denomination used for spam prevention to check broken invariant
-	// - EVM parameters: denomination used for running EVM state transitions in Evmos.
-	AttoEvmos string = "avce"
+	// - EVM parameters: denomination used for running EVM state transitions in vince.
+	Attovince string = "avce"
 
-	// BaseDenomUnit defines the base denomination unit for Evmos.
-	// 1 evmos = 1x10^{BaseDenomUnit} avce
+	// BaseDenomUnit defines the base denomination unit for vince.
+	// 1 vince = 1x10^{BaseDenomUnit} avce
 	BaseDenomUnit = 18
 
 	// DefaultGasPrice is default gas price for evm transactions
@@ -47,17 +47,17 @@ var PowerReduction = sdkmath.NewIntFromBigInt(new(big.Int).Exp(big.NewInt(10), b
 // NewVinceCoin is a utility function that returns an "avce" coin with the given sdkmath.Int amount.
 // The function will panic if the provided amount is negative.
 func NewVinceCoin(amount sdkmath.Int) sdk.Coin {
-	return sdk.NewCoin(AttoEvmos, amount)
+	return sdk.NewCoin(Attovince, amount)
 }
 
 // NewvincedecCoin is a utility function that returns an "avce" decimal coin with the given sdkmath.Int amount.
 // The function will panic if the provided amount is negative.
 func NewvincedecCoin(amount sdkmath.Int) sdk.DecCoin {
-	return sdk.NewDecCoin(AttoEvmos, amount)
+	return sdk.NewDecCoin(Attovince, amount)
 }
 
 // NewVinceCoinInt64 is a utility function that returns an "avce" coin with the given int64 amount.
 // The function will panic if the provided amount is negative.
 func NewVinceCoinInt64(amount int64) sdk.Coin {
-	return sdk.NewInt64Coin(AttoEvmos, amount)
+	return sdk.NewInt64Coin(Attovince, amount)
 }

@@ -23,7 +23,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/utils"
 )
 
-func TestEvmosExport(t *testing.T) {
+func TestvinceExport(t *testing.T) {
 	// create public key
 	privVal := mock.NewPV()
 	pubKey, err := privVal.GetPubKey()

@@ -28,7 +28,7 @@ import (
 )
 
 var (
-	// DefaultEVMDenom defines the default EVM denomination on Evmos
+	// DefaultEVMDenom defines the default EVM denomination on vince
 	DefaultEVMDenom = utils.BaseDenom
 	// DefaultAllowUnprotectedTxs rejects all unprotected txs (i.e false)
 	DefaultAllowUnprotectedTxs = false

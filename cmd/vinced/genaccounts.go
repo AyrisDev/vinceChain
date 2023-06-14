@@ -39,7 +39,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/types"
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 
-	evmoskr "github.com/AyrisDev/vinceChain/v12/crypto/keyring"
+	vincekr "github.com/AyrisDev/vinceChain/v12/crypto/keyring"
 
 	vestingcli "github.com/AyrisDev/vinceChain/v12/x/vesting/client/cli"
 	vestingtypes "github.com/AyrisDev/vinceChain/v12/x/vesting/types"
@@ -82,7 +82,7 @@ contain valid denominations. Accounts may optionally be supplied with vesting pa
 						clientCtx.HomeDir,
 						inBuf,
 						clientCtx.Codec,
-						evmoskr.Option(),
+						vincekr.Option(),
 					)
 					if err != nil {
 						return err

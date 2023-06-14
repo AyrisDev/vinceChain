@@ -1,5 +1,5 @@
 syntax = "proto3";
-package evmos.erc20.v1;
+package vince.erc20.v1;
 
 option go_package = "github.com/AyrisDev/vinceChain/v12/x/erc20/types";
 

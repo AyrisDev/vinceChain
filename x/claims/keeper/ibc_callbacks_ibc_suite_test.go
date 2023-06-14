@@ -30,12 +30,12 @@ type IBCTestingSuite struct {
 	chainB      *ibcgotesting.TestChain // Vince chain B
 	chainCosmos *ibcgotesting.TestChain // Cosmos chain
 
-	pathEVM    *ibctesting.Path // chainA (Evmos) <-->  chainB (Evmos)
-	pathCosmos *ibctesting.Path // chainA (Evmos) <--> chainCosmos
+	pathEVM    *ibctesting.Path // chainA (vince) <-->  chainB (vince)
+	pathCosmos *ibctesting.Path // chainA (vince) <--> chainCosmos
 }
 
 func (suite *IBCTestingSuite) SetupTest() {
-	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 2, 1) // initializes 2 Evmos test chains and 1 Cosmos Chain
+	suite.coordinator = ibctesting.NewCoordinator(suite.T(), 2, 1) // initializes 2 vince test chains and 1 Cosmos Chain
 	suite.chainA = suite.coordinator.GetChain(ibcgotesting.GetChainID(1))
 	suite.chainB = suite.coordinator.GetChain(ibcgotesting.GetChainID(2))
 	suite.chainCosmos = suite.coordinator.GetChain(ibcgotesting.GetChainID(3))
@@ -44,30 +44,30 @@ func (suite *IBCTestingSuite) SetupTest() {
 	suite.coordinator.CommitNBlocks(suite.chainB, 2)
 	suite.coordinator.CommitNBlocks(suite.chainCosmos, 2)
 
-	evmosChainA := suite.chainA.App.(*app.Vince)
-	evmosChainB := suite.chainB.App.(*app.Vince)
+	vinceChainA := suite.chainA.App.(*app.Vince)
+	vinceChainB := suite.chainB.App.(*app.Vince)
 
 	// Mint coins to pay tx fees
 	amt, ok := sdk.NewIntFromString("1000000000000000000000")
 	suite.Require().True(ok)
-	coinEvmos := sdk.NewCoin(utils.BaseDenom, amt)
-	coins := sdk.NewCoins(coinEvmos)
+	coinvince := sdk.NewCoin(utils.BaseDenom, amt)
+	coins := sdk.NewCoins(coinvince)
 
-	err := evmosChainA.BankKeeper.MintCoins(suite.chainA.GetContext(), inflationtypes.ModuleName, coins)
+	err := vinceChainA.BankKeeper.MintCoins(suite.chainA.GetContext(), inflationtypes.ModuleName, coins)
 	suite.Require().NoError(err)
-	err = evmosChainA.BankKeeper.SendCoinsFromModuleToAccount(suite.chainA.GetContext(), inflationtypes.ModuleName, suite.chainA.SenderAccount.GetAddress(), coins)
-	suite.Require().NoError(err)
-
-	err = evmosChainB.BankKeeper.MintCoins(suite.chainB.GetContext(), inflationtypes.ModuleName, coins)
-	suite.Require().NoError(err)
-	err = evmosChainB.BankKeeper.SendCoinsFromModuleToAccount(suite.chainB.GetContext(), inflationtypes.ModuleName, suite.chainB.SenderAccount.GetAddress(), coins)
+	err = vinceChainA.BankKeeper.SendCoinsFromModuleToAccount(suite.chainA.GetContext(), inflationtypes.ModuleName, suite.chainA.SenderAccount.GetAddress(), coins)
 	suite.Require().NoError(err)
 
-	evmParams := evmosChainA.EvmKeeper.GetParams(suite.chainA.GetContext())
+	err = vinceChainB.BankKeeper.MintCoins(suite.chainB.GetContext(), inflationtypes.ModuleName, coins)
+	suite.Require().NoError(err)
+	err = vinceChainB.BankKeeper.SendCoinsFromModuleToAccount(suite.chainB.GetContext(), inflationtypes.ModuleName, suite.chainB.SenderAccount.GetAddress(), coins)
+	suite.Require().NoError(err)
+
+	evmParams := vinceChainA.EvmKeeper.GetParams(suite.chainA.GetContext())
 	evmParams.EvmDenom = utils.BaseDenom
-	err = evmosChainA.EvmKeeper.SetParams(suite.chainA.GetContext(), evmParams)
+	err = vinceChainA.EvmKeeper.SetParams(suite.chainA.GetContext(), evmParams)
 	suite.Require().NoError(err)
-	err = evmosChainB.EvmKeeper.SetParams(suite.chainB.GetContext(), evmParams)
+	err = vinceChainB.EvmKeeper.SetParams(suite.chainB.GetContext(), evmParams)
 	suite.Require().NoError(err)
 
 	claimsRecord := types.NewClaimsRecord(sdk.NewInt(10000))
@@ -110,8 +110,8 @@ func TestIBCTestingSuite(t *testing.T) {
 }
 
 func (suite *IBCTestingSuite) TestOnAcknowledgementPacketIBC() {
-	sender := "evmos1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms"   //nolint:goconst
-	receiver := "evmos1hf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625" //nolint:goconst
+	sender := "vince1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms"   //nolint:goconst
+	receiver := "vince1hf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625" //nolint:goconst
 
 	senderAddr, err := sdk.AccAddressFromBech32(sender)
 	suite.Require().NoError(err)
@@ -206,8 +206,8 @@ func (suite *IBCTestingSuite) TestOnAcknowledgementPacketIBC() {
 }
 
 func (suite *IBCTestingSuite) TestOnRecvPacketIBC() {
-	sender := "evmos1hf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625"
-	receiver := "evmos1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms"
+	sender := "vince1hf0468jjpe6m6vx38s97z2qqe8ldu0njdyf625"
+	receiver := "vince1sv9m0g7ycejwr3s369km58h5qe7xj77hvcxrms"
 	triggerAmt := types.IBCTriggerAmt
 
 	senderAddr, err := sdk.AccAddressFromBech32(sender)

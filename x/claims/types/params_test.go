@@ -75,7 +75,7 @@ func TestParamsValidate(t *testing.T) {
 			types.Params{
 				DurationOfDecay:    types.DefaultDurationOfDecay,
 				DurationUntilDecay: types.DefaultDurationUntilDecay,
-				ClaimsDenom:        "tevmos",
+				ClaimsDenom:        "tvince",
 				AuthorizedChannels: types.DefaultAuthorizedChannels,
 				EVMChannels:        types.DefaultEVMChannels,
 			},
@@ -85,7 +85,7 @@ func TestParamsValidate(t *testing.T) {
 			"success - constructor",
 			types.NewParams(
 				true,
-				"tevmos",
+				"tvince",
 				time.Unix(0, 0),
 				types.DefaultDurationOfDecay,
 				types.DefaultDurationUntilDecay,

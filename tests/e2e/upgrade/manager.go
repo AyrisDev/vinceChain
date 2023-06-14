@@ -32,7 +32,7 @@ import (
 )
 
 // Manager defines a docker pool instance, used to build, run, interact with and stop docker containers
-// running Evmos nodes.
+// running vince nodes.
 type Manager struct {
 	pool    *dockertest.Pool
 	network *dockertest.Network
@@ -86,7 +86,7 @@ func (m *Manager) BuildImage(name, version, dockerFile, contextDir string, args 
 		// rebuild the image every time in case there were changes
 		// and the image is cached
 		NoCache: true,
-		// name with tag, e.g. evmos:v9.0.0
+		// name with tag, e.g. vince:v9.0.0
 		Name:         fmt.Sprintf("%s:%s", name, version),
 		OutputStream: io.Discard,
 		ErrorStream:  os.Stdout,
@@ -132,7 +132,7 @@ func (m *Manager) RunNode(node *Node) error {
 			if c.State.ExitCode != 0 {
 				stdOut, stdErr, _ := m.GetLogs(resource.Container.ID)
 				return fmt.Errorf(
-					"can't start evmos node, container exit code: %d\n\n[error stream]:\n\n%s\n\n[output stream]:\n\n%s",
+					"can't start vince node, container exit code: %d\n\n[error stream]:\n\n%s\n\n[output stream]:\n\n%s",
 					c.State.ExitCode,
 					stdErr,
 					stdOut,
@@ -179,7 +179,7 @@ func (m *Manager) GetLogs(containerID string) (stdOut, stdErr string, err error)
 	return outBuf.String(), errBuf.String(), nil
 }
 
-// WaitForHeight queries the Evmos node every second until the node will reach the specified height.
+// WaitForHeight queries the vince node every second until the node will reach the specified height.
 // After 5 minutes this function times out and returns an error
 func (m *Manager) WaitForHeight(ctx context.Context, height int) (string, error) {
 	var currentHeight int
@@ -209,7 +209,7 @@ func (m *Manager) WaitForHeight(ctx context.Context, height int) (string, error)
 	}
 }
 
-// GetNodeHeight calls the Evmos CLI in the current node container to get the current block height
+// GetNodeHeight calls the vince CLI in the current node container to get the current block height
 func (m *Manager) GetNodeHeight(ctx context.Context) (int, error) {
 	exec, err := m.CreateExec([]string{"vinced", "q", "block"}, m.ContainerID())
 	if err != nil {
@@ -238,12 +238,12 @@ func (m *Manager) GetNodeHeight(ctx context.Context) (int, error) {
 		}
 	}
 	if errBuff.String() != "" {
-		return 0, fmt.Errorf("evmos query error: %s", errBuff.String())
+		return 0, fmt.Errorf("vince query error: %s", errBuff.String())
 	}
 	return h, nil
 }
 
-// GetNodeVersion calls the Evmos CLI in the current node container to get the
+// GetNodeVersion calls the vince CLI in the current node container to get the
 // current node version
 func (m *Manager) GetNodeVersion(ctx context.Context) (string, error) {
 	exec, err := m.CreateExec([]string{"vinced", "version"}, m.ContainerID())
@@ -255,7 +255,7 @@ func (m *Manager) GetNodeVersion(ctx context.Context) (string, error) {
 		return "", fmt.Errorf("run exec error: %w", err)
 	}
 	if errBuff.String() != "" {
-		return "", fmt.Errorf("evmos version error: %s", errBuff.String())
+		return "", fmt.Errorf("vince version error: %s", errBuff.String())
 	}
 	return outBuff.String(), nil
 }

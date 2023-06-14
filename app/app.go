@@ -191,7 +191,7 @@ func init() {
 
 	DefaultNodeHome = filepath.Join(userHomeDir, ".vinced")
 
-	// manually update the power reduction by replacing micro (u) -> atto (a) evmos
+	// manually update the power reduction by replacing micro (u) -> atto (a) vince
 	sdk.DefaultPowerReduction = vincetypes.PowerReduction
 	// modify fee market parameter defaults through global
 	feemarkettypes.DefaultMinGasPrice = MainnetMinGasPrices
@@ -971,7 +971,7 @@ func (app *Vince) BlockedAddrs() map[string]bool {
 	return blockedAddrs
 }
 
-// LegacyAmino returns Evmos's amino codec.
+// LegacyAmino returns vince's amino codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
@@ -979,7 +979,7 @@ func (app *Vince) LegacyAmino() *codec.LegacyAmino {
 	return app.cdc
 }
 
-// AppCodec returns Evmos's app codec.
+// AppCodec returns vince's app codec.
 //
 // NOTE: This is solely to be used for testing purposes as it may be desirable
 // for modules to register their own custom testing types.
@@ -987,7 +987,7 @@ func (app *Vince) AppCodec() codec.Codec {
 	return app.appCodec
 }
 
-// InterfaceRegistry returns Evmos's InterfaceRegistry
+// InterfaceRegistry returns vince's InterfaceRegistry
 func (app *Vince) InterfaceRegistry() types.InterfaceRegistry {
 	return app.interfaceRegistry
 }

@@ -1,9 +1,9 @@
 syntax = "proto3";
-package evmos.claims.v1;
+package vince.claims.v1;
 
 import "cosmos/msg/v1/msg.proto";
 import "cosmos_proto/cosmos.proto";
-import "evmos/claims/v1/genesis.proto";
+import "vince/claims/v1/genesis.proto";
 import "gogoproto/gogo.proto";
 
 option go_package = "github.com/AyrisDev/vinceChain/v12/x/claims/types";

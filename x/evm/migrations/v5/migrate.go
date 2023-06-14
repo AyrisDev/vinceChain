@@ -46,7 +46,7 @@ func MigrateStore(
 	extraEIPsBz := store.Get(types.ParamStoreKeyExtraEIPs)
 	cdc.MustUnmarshal(extraEIPsBz, &extraEIPs)
 
-	// revert ExtraEIP change for Evmos testnet
+	// revert ExtraEIP change for vince testnet
 	if ctx.ChainID() == "vince_1903-4" {
 		extraEIPs.EIPs = []int64{}
 	}

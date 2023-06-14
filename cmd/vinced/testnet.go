@@ -61,7 +61,7 @@ import (
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 
 	cmdcfg "github.com/AyrisDev/vinceChain/v12/cmd/config"
-	evmoskr "github.com/AyrisDev/vinceChain/v12/crypto/keyring"
+	vincekr "github.com/AyrisDev/vinceChain/v12/crypto/keyring"
 	"github.com/AyrisDev/vinceChain/v12/testutil/network"
 )
 
@@ -228,7 +228,7 @@ func initTestnetFiles(
 	args initArgs,
 ) error {
 	if args.chainID == "" {
-		args.chainID = fmt.Sprintf("evmos_%d-1", tmrand.Int63n(9999999999999)+1)
+		args.chainID = fmt.Sprintf("vince_%d-1", tmrand.Int63n(9999999999999)+1)
 	}
 
 	nodeIDs := make([]string, args.numValidators)
@@ -280,7 +280,7 @@ func initTestnetFiles(
 		memo := fmt.Sprintf("%s@%s:26656", nodeIDs[i], ip)
 		genFiles = append(genFiles, nodeConfig.GenesisFile())
 
-		kb, err := keyring.New(sdk.KeyringServiceName(), args.keyringBackend, nodeDir, inBuf, clientCtx.Codec, evmoskr.Option())
+		kb, err := keyring.New(sdk.KeyringServiceName(), args.keyringBackend, nodeDir, inBuf, clientCtx.Codec, vincekr.Option())
 		if err != nil {
 			return err
 		}

@@ -69,7 +69,7 @@ func Commit(ctx sdk.Context, app *app.Vince, t time.Duration, vs *tmtypes.Valida
 // DeliverTx delivers a cosmos tx for a given set of msgs
 func DeliverTx(
 	ctx sdk.Context,
-	appEvmos *app.Vince,
+	appvince *app.Vince,
 	priv cryptotypes.PrivKey,
 	gasPrice *sdkmath.Int,
 	msgs ...sdk.Msg,
@@ -77,7 +77,7 @@ func DeliverTx(
 	txConfig := encoding.MakeConfig(app.ModuleBasics).TxConfig
 	tx, err := tx.PrepareCosmosTx(
 		ctx,
-		appEvmos,
+		appvince,
 		tx.CosmosTxArgs{
 			TxCfg:    txConfig,
 			Priv:     priv,
@@ -90,30 +90,30 @@ func DeliverTx(
 	if err != nil {
 		return abci.ResponseDeliverTx{}, err
 	}
-	return BroadcastTxBytes(appEvmos, txConfig.TxEncoder(), tx)
+	return BroadcastTxBytes(appvince, txConfig.TxEncoder(), tx)
 }
 
 // DeliverEthTx generates and broadcasts a Cosmos Tx populated with MsgEthereumTx messages.
 // If a private key is provided, it will attempt to sign all messages with the given private key,
 // otherwise, it will assume the messages have already been signed.
 func DeliverEthTx(
-	appEvmos *app.Vince,
+	appvince *app.Vince,
 	priv cryptotypes.PrivKey,
 	msgs ...sdk.Msg,
 ) (abci.ResponseDeliverTx, error) {
 	txConfig := encoding.MakeConfig(app.ModuleBasics).TxConfig
 
-	tx, err := tx.PrepareEthTx(txConfig, appEvmos, priv, msgs...)
+	tx, err := tx.PrepareEthTx(txConfig, appvince, priv, msgs...)
 	if err != nil {
 		return abci.ResponseDeliverTx{}, err
 	}
-	return BroadcastTxBytes(appEvmos, txConfig.TxEncoder(), tx)
+	return BroadcastTxBytes(appvince, txConfig.TxEncoder(), tx)
 }
 
 // CheckTx checks a cosmos tx for a given set of msgs
 func CheckTx(
 	ctx sdk.Context,
-	appEvmos *app.Vince,
+	appvince *app.Vince,
 	priv cryptotypes.PrivKey,
 	gasPrice *sdkmath.Int,
 	msgs ...sdk.Msg,
@@ -122,7 +122,7 @@ func CheckTx(
 
 	tx, err := tx.PrepareCosmosTx(
 		ctx,
-		appEvmos,
+		appvince,
 		tx.CosmosTxArgs{
 			TxCfg:    txConfig,
 			Priv:     priv,
@@ -135,22 +135,22 @@ func CheckTx(
 	if err != nil {
 		return abci.ResponseCheckTx{}, err
 	}
-	return checkTxBytes(appEvmos, txConfig.TxEncoder(), tx)
+	return checkTxBytes(appvince, txConfig.TxEncoder(), tx)
 }
 
 // CheckEthTx checks a Ethereum tx for a given set of msgs
 func CheckEthTx(
-	appEvmos *app.Vince,
+	appvince *app.Vince,
 	priv cryptotypes.PrivKey,
 	msgs ...sdk.Msg,
 ) (abci.ResponseCheckTx, error) {
 	txConfig := encoding.MakeConfig(app.ModuleBasics).TxConfig
 
-	tx, err := tx.PrepareEthTx(txConfig, appEvmos, priv, msgs...)
+	tx, err := tx.PrepareEthTx(txConfig, appvince, priv, msgs...)
 	if err != nil {
 		return abci.ResponseCheckTx{}, err
 	}
-	return checkTxBytes(appEvmos, txConfig.TxEncoder(), tx)
+	return checkTxBytes(appvince, txConfig.TxEncoder(), tx)
 }
 
 // BroadcastTxBytes encodes a transaction and calls DeliverTx on the app.

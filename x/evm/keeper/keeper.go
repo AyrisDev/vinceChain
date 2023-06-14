@@ -127,7 +127,7 @@ func (k *Keeper) WithChainID(ctx sdk.Context) {
 	}
 
 	if !(chainID.Cmp(big.NewInt(1904)) == 0 || chainID.Cmp(big.NewInt(1903)) == 0) {
-		panic("EVM only supports Evmos chain identifiers (1903 or 1904)")
+		panic("EVM only supports vince chain identifiers (1903 or 1904)")
 	}
 
 	k.eip155ChainID = chainID

@@ -37,7 +37,7 @@ import (
 	vestingtypes "github.com/AyrisDev/vinceChain/v12/x/vesting/types"
 )
 
-// HandlerOptions defines the list of module keepers required to run the Evmos
+// HandlerOptions defines the list of module keepers required to run the vince
 // AnteHandler decorators.
 type HandlerOptions struct {
 	Cdc                    codec.BinaryCodec

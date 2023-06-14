@@ -1,5 +1,5 @@
 syntax = "proto3";
-package evmos.vesting.v1;
+package vince.vesting.v1;
 
 option go_package = "github.com/AyrisDev/vinceChain/v12/x/vesting/types";
 

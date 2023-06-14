@@ -37,7 +37,7 @@ var (
 		Path:      "transfer/channel-0",
 		BaseDenom: "avce",
 	}
-	UevmosIbcdenom = Uvincedenomtrace.IBCDenom()
+	uvceIbcdenom = Uvincedenomtrace.IBCDenom()
 
 	UatomOsmoDenomtrace = transfertypes.DenomTrace{
 		Path:      "transfer/channel-0/transfer/channel-1",

@@ -1,5 +1,5 @@
 syntax = "proto3";
-package evmos.vesting.v1;
+package vince.vesting.v1;
 
 import "cosmos/base/v1beta1/coin.proto";
 import "gogoproto/gogo.proto";
@@ -11,7 +11,7 @@ option go_package = "github.com/AyrisDev/vinceChain/v12/x/vesting/types";
 service Query {
   // Balances retrieves the unvested, vested and locked tokens for a vesting account
   rpc Balances(QueryBalancesRequest) returns (QueryBalancesResponse) {
-    option (google.api.http).get = "/evmos/vesting/v1/balances/{address}";
+    option (google.api.http).get = "/vince/vesting/v1/balances/{address}";
   }
 }
 

@@ -40,7 +40,7 @@ import (
 	evmtypes "github.com/AyrisDev/vinceChain/v12/x/evm/types"
 )
 
-// ChainIDPrefix defines the default chain ID prefix for Evmos test chains
+// ChainIDPrefix defines the default chain ID prefix for vince test chains
 var ChainIDPrefix = "vince_1903-"
 
 func init() {

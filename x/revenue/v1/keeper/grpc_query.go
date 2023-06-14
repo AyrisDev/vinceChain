@@ -137,7 +137,7 @@ func (k Keeper) DeployerRevenues( //nolint: dupl
 	if err != nil {
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"invalid format for deployer %s, should be bech32 ('evmos...')", req.DeployerAddress,
+			"invalid format for deployer %s, should be bech32 ('vince...')", req.DeployerAddress,
 		)
 	}
 
@@ -183,7 +183,7 @@ func (k Keeper) WithdrawerRevenues( //nolint: dupl
 	if err != nil {
 		return nil, status.Errorf(
 			codes.InvalidArgument,
-			"invalid format for withdraw addr %s, should be bech32 ('evmos...')", req.WithdrawerAddress,
+			"invalid format for withdraw addr %s, should be bech32 ('vince...')", req.WithdrawerAddress,
 		)
 	}
 

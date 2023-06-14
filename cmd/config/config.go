@@ -43,7 +43,7 @@ const (
 const (
 	// DisplayDenom defines the denomination displayed to users in client applications.
 	DisplayDenom = "vce"
-	// BaseDenom defines to the default denomination used in Evmos (staking, EVM, governance, etc.)
+	// BaseDenom defines to the default denomination used in vince (staking, EVM, governance, etc.)
 	BaseDenom = "avce"
 )
 

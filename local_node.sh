@@ -59,7 +59,7 @@ if [[ $overwrite == "y" || $overwrite == "Y" ]]; then
 		vinced keys add "$KEY" --keyring-backend $KEYRING --algo $KEYALGO --home "$HOMEDIR"
 	done
 
-	# Set moniker and chain-id for Evmos (Moniker can be anything, chain-id must be an integer)
+	# Set moniker and chain-id for vince (Moniker can be anything, chain-id must be an integer)
 	vinced init $MONIKER -o --chain-id $CHAINID --home "$HOMEDIR"
 
 	# Change parameter token denominations to avce

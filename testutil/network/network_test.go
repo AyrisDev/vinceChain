@@ -14,7 +14,7 @@ import (
 	"github.com/AyrisDev/vinceChain/v12/server/config"
 	"github.com/AyrisDev/vinceChain/v12/testutil/network"
 
-	evmosnetwork "github.com/AyrisDev/vinceChain/v12/testutil/network"
+	vincenetwork "github.com/AyrisDev/vinceChain/v12/testutil/network"
 )
 
 type IntegrationTestSuite struct {
@@ -27,7 +27,7 @@ func (s *IntegrationTestSuite) SetupSuite() {
 	s.T().Log("setting up integration test suite")
 
 	var err error
-	cfg := evmosnetwork.DefaultConfig()
+	cfg := vincenetwork.DefaultConfig()
 	cfg.JSONRPCAddress = config.DefaultJSONRPCAddress
 	cfg.NumValidators = 1
 

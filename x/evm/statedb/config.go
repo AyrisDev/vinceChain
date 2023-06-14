@@ -1,5 +1,5 @@
 // Copyright 2023 Vince Foundation
-// This file is part of Evmos' Evmos packages.
+// This file is part of vince' vince packages.
 //
 // The Vince packages is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by

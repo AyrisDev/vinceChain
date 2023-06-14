@@ -24,7 +24,7 @@
 // - They had a balance of 0 after block 5074187
 // NOTE community and claims module account were removed from this list since they were not affected by this bug.
 
-// The scripts that were used to find affected accounts were made public at https://github.com/evmos/claims_fixer
+// The scripts that were used to find affected accounts were made public at https://github.com/vince/claims_fixer
 // with detail instructions on how to run them.
 
 package v9
