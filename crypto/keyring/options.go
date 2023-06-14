@@ -21,7 +21,7 @@ import (
 	cosmosLedger "github.com/cosmos/cosmos-sdk/crypto/ledger"
 	"github.com/cosmos/cosmos-sdk/crypto/types"
 
-	"github.com/vince-chain/vince-ledger-go/ledger"
+	"github.com/evmos/evmos-ledger-go/ledger"
 	"github.com/AyrisDev/vinceChain/v12/crypto/ethsecp256k1"
 	"github.com/AyrisDev/vinceChain/v12/crypto/hd"
 )
