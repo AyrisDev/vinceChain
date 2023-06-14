@@ -38,7 +38,7 @@ var (
 	// The Ledger derivation function is responsible for all signing and address generation.
 	SupportedAlgorithmsLedger = keyring.SigningAlgoList{hd.EthSecp256k1}
 	// LedgerDerivation defines the vince Ledger Go derivation (Ethereum app with EIP-712 signing)
-	LedgerDerivation = ledger.vinceLedgerDerivation()
+	LedgerDerivation = ledger.evmosLedgerDerivation()
 	// CreatePubkey uses the ethsecp256k1 pubkey with Ethereum address generation and keccak hashing
 	CreatePubkey = func(key []byte) types.PubKey { return &ethsecp256k1.PubKey{Key: key} }
 	// SkipDERConversion represents whether the signed Ledger output should skip conversion from DER to BER.
