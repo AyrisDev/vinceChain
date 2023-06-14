@@ -1,6 +1,10 @@
 swagger: "2.0"
 info:
+<<<<<<< HEAD
+  title: vince Chain - gRPC Gateway docs
+=======
   title: Vince Chain - gRPC Gateway docs
+>>>>>>> 6fccf4bdd0cc443d06f4c1d68ffbf850955d888b
   description: A REST interface for state queries and transactions
   version: 1.0.0
 paths:
