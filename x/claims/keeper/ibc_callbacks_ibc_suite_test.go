@@ -26,8 +26,8 @@ type IBCTestingSuite struct {
 	coordinator *ibcgotesting.Coordinator
 
 	// testing chains used for convenience and readability
-	chainA      *ibcgotesting.TestChain // Evmos chain A
-	chainB      *ibcgotesting.TestChain // Evmos chain B
+	chainA      *ibcgotesting.TestChain // Vince chain A
+	chainB      *ibcgotesting.TestChain // Vince chain B
 	chainCosmos *ibcgotesting.TestChain // Cosmos chain
 
 	pathEVM    *ibctesting.Path // chainA (Evmos) <-->  chainB (Evmos)
